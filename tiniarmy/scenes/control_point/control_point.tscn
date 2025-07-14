@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmp8j07a7wjvm"]
+
+[ext_resource type="Texture2D" uid="uid://brbfdnfo34sym" path="res://assets/Units/House/Tower_Blue.png" id="1_i8d7b"]
+[ext_resource type="Script" uid="uid://r6q7m0av2nb2" path="res://scenes/control_point/control_point.gd" id="1_yynnc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yynnc"]
+size = Vector2(86, 171)
+
+[node name="ControlPoint" type="Area2D"]
+scale = Vector2(0.5, 0.5)
+collision_mask = 15
+script = ExtResource("1_yynnc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 9.5)
+shape = SubResource("RectangleShape2D_yynnc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(3.1285e-07, 0.176391, 0.0583908, 1)
+position = Vector2(4, -2)
+texture = ExtResource("1_i8d7b")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

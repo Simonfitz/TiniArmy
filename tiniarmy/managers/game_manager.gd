@@ -1,7 +1,7 @@
 extends Node
 
 const GOLD_TIME = 1
-
+const BASE_GOLD_VALUE = 1
 var gold_timer = 0
 
 signal OnSpawnUnit
@@ -11,6 +11,10 @@ var PlayerRedGold = 0
 var PlayerBlueGold = 0
 var IsStarted = false
 
+var modifiers: Dictionary = {
+	"red": 1,
+	"blue": 1,
+}
 var UNITS_RESOURCES = [
 	[
 		preload("res://resources/units/unit_fighter.tres")
@@ -30,8 +34,8 @@ func _process(delta: float) -> void:
 		
 	gold_timer  += delta
 	if gold_timer > GOLD_TIME:
-		PlayerRedGold += 1
-		PlayerBlueGold += 1
+		PlayerRedGold += BASE_GOLD_VALUE*get_modifier("red")
+		PlayerBlueGold += BASE_GOLD_VALUE*get_modifier("blue")
 		gold_timer = 0
 	
 func SpawnUnit(team, unitIdx, unitLevel):
@@ -44,4 +48,12 @@ func SpawnUnit(team, unitIdx, unitLevel):
 
 func GetUnitCost(unitIdx, unitLevel) -> int:
 	return unitLevel + 1
+
+func add_modifier(team: String, value: int):
+	modifiers[team] += value
+
+func remove_modifier(team: String, value: int):
+	modifiers[team] -= value
 	
+func get_modifier(team: String):
+	return modifiers[team]
