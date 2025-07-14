@@ -203,3 +203,10 @@ offset_bottom = -38.0
 
 [node name="HitmarkContainer" type="Node2D" parent="."]
 position = Vector2(2, -11)
+
+[node name="StateLabel" type="Label" parent="."]
+offset_left = -34.0
+offset_top = -68.0
+offset_right = 44.0
+offset_bottom = -48.0
+text = "MOVING"
