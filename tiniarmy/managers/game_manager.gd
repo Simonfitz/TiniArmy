@@ -17,10 +17,9 @@ var modifiers: Dictionary = {
 }
 var UNITS_RESOURCES = [
 	[
-		preload("res://resources/units/unit_fighter.tres")
-	],
-	[
-		preload("res://resources/units/unit_ranger.tres")
+		preload("res://resources/units/unit_fighter1.tres"),
+		preload("res://resources/units/unit_fighter2.tres"),
+		preload("res://resources/units/unit_fighter3.tres")
 	],
 	[
 		preload("res://resources/units/unit_mage.tres")
@@ -28,7 +27,11 @@ var UNITS_RESOURCES = [
 	[
 		preload("res://resources/units/unit_spearman.tres")
 	],
-]
+	[
+		preload("res://resources/units/unit_ranger1.tres"),
+		preload("res://resources/units/unit_ranger2.tres"),
+		preload("res://resources/units/unit_ranger3.tres")
+	]
 
 
 func BaseDestroyed(team):

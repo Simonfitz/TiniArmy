@@ -2,9 +2,10 @@ extends RigidBody2D
 
 @export var team: String
 @export var sprite_texture: Texture
-var health: int = 10
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var destroyed_castle_texture = preload("res://assets/Units/House/Castle_Destroyed.png")
+
+var health: int = 50
 
 func _ready():
 	sprite_2d.texture = sprite_texture

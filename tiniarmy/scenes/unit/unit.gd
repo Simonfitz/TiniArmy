@@ -21,6 +21,7 @@ var target: RigidBody2D
 @onready var ally_ray_cast_2d: RayCast2D = $AllyRayCast2D
 @onready var healthbar: HealthBar = $Healthbar
 @onready var hitmark_container: Node2D = $HitmarkContainer
+@onready var audio_stream_player_2d_spawn: AudioStreamPlayer2D = $AudioStreamPlayer2DSpawn
 
 
 
@@ -30,6 +31,7 @@ func _ready():
 	set_layers()
 	set_masks()
 	healthbar.Setup(unit_info.health, unit_info.health)
+	audio_stream_player_2d_spawn.play()
 	
 func _process(_delta):
 	enemy_in_range()
