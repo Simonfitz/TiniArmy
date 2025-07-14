@@ -5,9 +5,12 @@ const BASE_GOLD_VALUE = 1
 var gold_timer = 0
 
 signal OnSpawnUnit
+signal OnGameOver
 
 var PlayerRedGold = 0
 var PlayerBlueGold = 0
+var IsStarted = false
+
 var modifiers: Dictionary = {
 	"red": 1,
 	"blue": 1,
@@ -22,10 +25,13 @@ var UNITS_RESOURCES = [
 ]
 
 
-func BaseDestroyed():
-	print("do something")
+func BaseDestroyed(team):
+	OnGameOver.emit(team)
 	
 func _process(delta: float) -> void:
+	if not IsStarted:
+		return
+		
 	gold_timer  += delta
 	if gold_timer > GOLD_TIME:
 		PlayerRedGold += BASE_GOLD_VALUE*get_modifier("red")
