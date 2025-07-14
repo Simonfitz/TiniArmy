@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://c1q4ixvw878vj"]
+[gd_scene load_steps=13 format=4 uid="uid://c1q4ixvw878vj"]
 
 [ext_resource type="Script" uid="uid://458ollabhikt" path="res://scenes/game/game.gd" id="1_0sr1o"]
 [ext_resource type="PackedScene" uid="uid://bl33qu6hsy0yo" path="res://scenes/player_input_ui/player_input.tscn" id="1_sul5r"]
@@ -1448,4 +1448,5 @@ IsRed = true
 
 [node name="BlueSpawn" parent="SpawnPoints" instance=ExtResource("4_kelw5")]
 position = Vector2(1800, 598)
+
 [connection signal="pressed" from="CanvasLayer/GameOverPanel/Button" to="." method="_on_button_pressed"]

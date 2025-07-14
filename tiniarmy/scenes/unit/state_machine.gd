@@ -6,6 +6,7 @@ var states: Dictionary
 var current_state: State
 
 @onready var unit: RigidBody2D = $".."
+@onready var state_label: Label = $"../StateLabel"
 
 
 
@@ -48,3 +49,4 @@ func state_transition(state_called_from: State, new_state_name: String):
 	current_state = states[new_state_name]
 	current_state.enter()
 	unit.unit_state = new_state_name
+	state_label.text = new_state_name

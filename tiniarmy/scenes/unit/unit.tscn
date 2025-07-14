@@ -192,3 +192,10 @@ metadata/_custom_type_script = "uid://duaiwkoi7fg5x"
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("5_vgvef")
 metadata/_custom_type_script = "uid://cunmh5xsurow8"
+
+[node name="StateLabel" type="Label" parent="."]
+offset_left = -34.0
+offset_top = -68.0
+offset_right = 44.0
+offset_bottom = -48.0
+text = "MOVING"
