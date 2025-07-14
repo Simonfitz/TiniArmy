@@ -19,7 +19,6 @@ func update(delta):
 
 	if attack_timer >= attack_cooldown:
 		attack_timer = 0.0  # Reset the timer
-		attack()
 	
 	#TODO
 	# if no valid enemy, transition state

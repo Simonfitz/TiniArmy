@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitInfo" load_steps=2 format=3 uid="uid://oyoy52ycdxq0"]
+[gd_resource type="Resource" script_class="UnitInfo" load_steps=2 format=3 uid="uid://bgyove0p2451f"]
 
 [ext_resource type="Script" uid="uid://wuif6px56lsy" path="res://resources/units/unit_info.gd" id="1_hgxyq"]
 

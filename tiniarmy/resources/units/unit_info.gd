@@ -7,4 +7,3 @@ extends Resource
 @export var range: int
 @export var movement: int
 @export var spriteframes: SpriteFrames
-@export var team: String
