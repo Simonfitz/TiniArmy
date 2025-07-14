@@ -1,15 +1,28 @@
-[gd_scene load_steps=7 format=3 uid="uid://bf0gdckk8p50d"]
+[gd_scene load_steps=8 format=3 uid="uid://bf0gdckk8p50d"]
 
 [ext_resource type="Script" uid="uid://c8k7crttpq6jk" path="res://scenes/unit/unit.gd" id="1_fmv3f"]
 [ext_resource type="Script" uid="uid://bi047e57bk7jv" path="res://scenes/unit/state_machine.gd" id="2_fvc8g"]
 [ext_resource type="Script" uid="uid://duaiwkoi7fg5x" path="res://resources/states/state_moving.gd" id="3_bhlit"]
 [ext_resource type="Script" uid="uid://c1p7wied0o3ge" path="res://resources/states/state_fighting.gd" id="4_vgvef"]
+[ext_resource type="Script" uid="uid://cunmh5xsurow8" path="res://resources/states/state_idle.gd" id="5_vgvef"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fvc8g"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bhlit"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"fighting",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"moving",
+"speed": 5.0
+}]
 
 [node name="Unit" type="RigidBody2D"]
+collision_layer = 2
 script = ExtResource("1_fmv3f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -18,6 +31,7 @@ shape = SubResource("RectangleShape2D_fvc8g")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_bhlit")
+animation = &"fighting"
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_fvc8g")
@@ -30,3 +44,7 @@ metadata/_custom_type_script = "uid://c1p7wied0o3ge"
 [node name="Moving" type="Node" parent="StateMachine"]
 script = ExtResource("3_bhlit")
 metadata/_custom_type_script = "uid://duaiwkoi7fg5x"
+
+[node name="StateIdle" type="Node" parent="StateMachine"]
+script = ExtResource("5_vgvef")
+metadata/_custom_type_script = "uid://cunmh5xsurow8"

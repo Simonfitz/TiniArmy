@@ -31,7 +31,7 @@ func set_state(new_state_name):
 
 	current_state = states[new_state_name]
 	current_state.enter()
-	unit.monster_state = new_state_name
+	unit.unit_state = new_state_name
 	print_debug("Set state:", current_state.name)
 
 
@@ -49,4 +49,4 @@ func state_transition(state_called_from: State, new_state_name: String):
 	await current_state.exited
 	current_state = states[new_state_name]
 	current_state.enter()
-	unit.monster_state = new_state_name
+	unit.unit_state = new_state_name

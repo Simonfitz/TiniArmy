@@ -11,12 +11,12 @@ var walk_duration := 1.0
 var walk_timer := 0.0
 var last_direction := DIRECTIONS.LEFT
 
-@onready var monster = $"../.."
-@onready var animation = $"../../Animation"
+@onready var unit: RigidBody2D = $"../.."
+@onready var animated_sprite_2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
 
 
 func enter():
-	monster.correct_monster_orientation()
+	animated_sprite_2d.play("fighting")
 
 
 func update(delta):
@@ -36,7 +36,7 @@ func walk_left():
 	animation.flip_h = false
 	animation.play("walk")
 	var new_monster_pos = Vector2(monster.position.x - MOVE_DISTANCE, monster.position.y)
-	if movement_within_bounds(new_monster_pos):
+	if can_move(new_monster_pos):
 		var movement_tween = create_tween()
 		movement_tween.tween_property(monster, "position", new_monster_pos, walk_duration)
 		last_direction = DIRECTIONS.LEFT
@@ -46,58 +46,10 @@ func walk_right():
 	animation.flip_h = true
 	animation.play("walk")
 	var new_monster_pos = Vector2(monster.position.x + MOVE_DISTANCE, monster.position.y)
-	if movement_within_bounds(new_monster_pos):
+	if can_move(new_monster_pos):
 		var movement_tween = create_tween()
 		movement_tween.tween_property(monster, "position", new_monster_pos, walk_duration)
 		last_direction = DIRECTIONS.LEFT
 
-
-func walk_random():
-	var rand = randi() % 2 == 0
-	if rand:
-		walk_current_direction()
-	else:
-		walk_new_direction()
-
-
-func walk_current_direction():
-	if is_moving_right():
-		walk_right()
-	else:
-		walk_left()
-
-
-func walk_new_direction():
-	if is_moving_right():
-		walk_left()
-	else:
-		walk_right()
-
-
-func is_moving_right():
-	if last_direction == DIRECTIONS.RIGHT:
-		return true
-	return false
-
-
-func stop_walking():
+func can_move(new_monster_pos):
 	pass
-
-
-func randomize_state_duration():
-	state_timer = randf_range(1, MAX_STATE_DURATION - walk_duration)
-
-
-func movement_within_bounds(monster_position) -> bool:
-	var window_size = get_window().size
-	var frame_texture = animation.sprite_frames.get_frame_texture(animation.animation, 0)
-	var monster_x_offset = frame_texture.get_width() / 2
-	# Check the monster y pos
-	if monster_position.y <= window_size.y:
-		# Check x position is not out of bounds on either side of window
-		if (
-			monster_position.x - monster_x_offset > 0
-			and monster_position.x + monster_x_offset < window_size.x
-		):
-			return true
-	return false
