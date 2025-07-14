@@ -11,9 +11,6 @@ func _ready():
 func SetDmg(dmg):
 	_dmg = dmg
 
-func _process(delta):
-	pass
-
 func on_animation_finished():
 	label_dmg.show()
 	label_dmg.text = str(_dmg)

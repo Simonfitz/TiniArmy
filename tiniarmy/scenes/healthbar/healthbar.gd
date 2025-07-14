@@ -15,7 +15,7 @@ var IsSetup = false
 func _ready():
 	_last_value = _currentValue if _currentValue != null else 0
 
-func _process(delta):
+func _process(_delta):
 	if value > _last_value and not _was_growing:
 		_was_growing = true
 	if value <= _last_value and _was_growing and _grow_tween != null and _grow_tween != null:
