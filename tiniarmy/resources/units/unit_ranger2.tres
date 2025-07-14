@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitInfo" load_steps=46 format=3 uid="uid://bgyove0p2451f"]
+[gd_resource type="Resource" script_class="UnitInfo" load_steps=46 format=3 uid="uid://cb638p057h1ml"]
 
 [ext_resource type="Script" uid="uid://wuif6px56lsy" path="res://resources/units/unit_info.gd" id="1_hgxyq"]
 [ext_resource type="Texture2D" uid="uid://cbqiihmf7247h" path="res://assets/Units/Blue Units/Archer/Archer_Shoot.png" id="2_p6dii"]

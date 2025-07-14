@@ -22,6 +22,12 @@ var UNITS_RESOURCES = [
 		preload("res://resources/units/unit_fighter3.tres")
 	],
 	[
+		preload("res://resources/units/unit_mage.tres")
+	],
+	[
+		preload("res://resources/units/unit_spearman.tres")
+	],
+	[
 		preload("res://resources/units/unit_ranger1.tres"),
 		preload("res://resources/units/unit_ranger2.tres"),
 		preload("res://resources/units/unit_ranger3.tres")
@@ -62,3 +68,6 @@ func remove_modifier(team: String, value: int):
 	
 func get_modifier(team: String):
 	return modifiers[team]
+	
+func get_resouce(idx):
+	return UNITS_RESOURCES[idx]

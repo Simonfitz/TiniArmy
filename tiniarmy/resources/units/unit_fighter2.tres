@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitInfo" load_steps=46 format=3 uid="uid://drl7ftytstrxv"]
+[gd_resource type="Resource" script_class="UnitInfo" load_steps=46 format=3 uid="uid://bgbdxdgrftakj"]
 
 [ext_resource type="Script" uid="uid://wuif6px56lsy" path="res://resources/units/unit_info.gd" id="1_ytyk8"]
 [ext_resource type="Texture2D" uid="uid://5ne8uvkq1e5" path="res://assets/Units/Blue Units/Warrior/Warrior_Attack1.png" id="2_0huo4"]

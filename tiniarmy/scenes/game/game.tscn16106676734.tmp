@@ -1,6 +1,7 @@
 [gd_scene load_steps=31 format=4 uid="uid://c1q4ixvw878vj"]
 
 [ext_resource type="Script" uid="uid://458ollabhikt" path="res://scenes/game/game.gd" id="1_0sr1o"]
+[ext_resource type="PackedScene" uid="uid://bl33qu6hsy0yo" path="res://scenes/player_input_ui/player_input.tscn" id="1_sul5r"]
 [ext_resource type="Texture2D" uid="uid://bkglpynm022t3" path="res://assets/Tilemaps/Tilemap_color1.png" id="2_7h61r"]
 [ext_resource type="Texture2D" uid="uid://dgy540tfrbyax" path="res://assets/UI/Banner_Horizontal.png" id="3_87uf6"]
 [ext_resource type="PackedScene" uid="uid://cqd76ugl24uh7" path="res://scenes/spawn_point/spawn_point.tscn" id="4_kelw5"]
@@ -16,7 +17,6 @@
 [ext_resource type="Texture2D" uid="uid://ccoxx5g7swqxx" path="res://assets/Tilemaps/cloud_tileset.png" id="10_3xj4h"]
 [ext_resource type="Texture2D" uid="uid://bxrrm37r4ieso" path="res://assets/Tilemaps/Water.png" id="10_pg2xm"]
 [ext_resource type="AudioStream" uid="uid://kgx5n3rmjxjv" path="res://assets/sounds/bg.mp3" id="17_5v6r0"]
-[ext_resource type="AudioStream" uid="uid://ch5i1lqn0omcw" path="res://assets/sounds/woosh-ch.mp3" id="18_uyinl"]
 [ext_resource type="PackedScene" uid="uid://dhr2fvrjrn1kq" path="res://scenes/player_input_ui/new_player_input_ui.tscn" id="18_uyinl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gc57s"]
@@ -2569,6 +2569,19 @@ script = ExtResource("1_0sr1o")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="PlayerInput" parent="CanvasLayer" instance=ExtResource("1_sul5r")]
+offset_left = 40.0
+offset_top = 31.0
+offset_right = 80.0
+offset_bottom = 101.0
+IsPlayerRed = true
+
+[node name="PlayerInput2" parent="CanvasLayer" instance=ExtResource("1_sul5r")]
+offset_left = 1818.0
+offset_top = 38.0
+offset_right = 1858.0
+offset_bottom = 108.0
+
 [node name="GameOverPanel" type="Panel" parent="CanvasLayer"]
 visible = false
 anchors_preset = 15
@@ -2766,31 +2779,17 @@ position = Vector2(1800, 598)
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_5v6r0")
 volume_db = -23.009
-autoplay = true
-
-[node name="AudioListener2D" type="AudioListener2D" parent="."]
-position = Vector2(946, 349)
-current = true
-
-[node name="AudioStreamPlayerReady" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("18_uyinl")
 
 [node name="NewPlayerInputUi" parent="." instance=ExtResource("18_uyinl")]
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 93.0
-offset_top = 89.0
-offset_right = 93.0
-offset_bottom = 89.0
+offset_left = 212.0
+offset_top = 81.0
+offset_right = 212.0
+offset_bottom = 81.0
 grow_horizontal = 1
 grow_vertical = 1
-IsPlayerRed = true
-
-[node name="NewPlayerInputUi2" parent="." instance=ExtResource("18_uyinl")]
-offset_left = 1821.0
-offset_top = 85.0
-offset_right = 1821.0
-offset_bottom = 85.0
+IsPlayerRed = false
 
 [connection signal="pressed" from="CanvasLayer/GameOverPanel/Button" to="." method="_on_button_pressed"]

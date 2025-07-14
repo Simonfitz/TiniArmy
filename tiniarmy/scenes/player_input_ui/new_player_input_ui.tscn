@@ -1,0 +1,111 @@
+[gd_scene load_steps=7 format=3 uid="uid://dhr2fvrjrn1kq"]
+
+[ext_resource type="Script" uid="uid://c3qlj3o48a4it" path="res://scenes/player_input_ui/new_player_input_ui.gd" id="1_nwn8g"]
+[ext_resource type="Texture2D" uid="uid://dnpa8v4xix1ty" path="res://assets/UI/Banner_Vertical.png" id="2_h54vr"]
+[ext_resource type="Texture2D" uid="uid://yylnp7r01n6o" path="res://assets/UI/pointer.png" id="3_rqmtl"]
+[ext_resource type="Texture2D" uid="uid://diwenugsy342e" path="res://assets/Units/Blue Units/Warrior/Warrior_Idle.png" id="4_euiqx"]
+[ext_resource type="Texture2D" uid="uid://cb41n8lsch6n8" path="res://assets/UI/coin.png" id="5_2xwnp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vga5f"]
+atlas = ExtResource("4_euiqx")
+region = Rect2(32, 32, 128, 128)
+
+[node name="NewPlayerInputUi" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1760.0
+offset_bottom = -880.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nwn8g")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = 1.0
+offset_right = 8.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_h54vr")
+
+[node name="Information" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = 11.0
+offset_right = 4.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Selection" type="CenterContainer" parent="Information"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Information/Selection"]
+layout_mode = 2
+
+[node name="LeftIcon" type="TextureRect" parent="Information/Selection/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_rqmtl")
+flip_h = true
+
+[node name="UnitLabel" type="Label" parent="Information/Selection/HBoxContainer"]
+layout_mode = 2
+text = "Test Name"
+
+[node name="RightIcon" type="TextureRect" parent="Information/Selection/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_rqmtl")
+
+[node name="UnitInfo" type="CenterContainer" parent="Information"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Information/UnitInfo"]
+layout_mode = 2
+
+[node name="UnitIcon" type="TextureRect" parent="Information/UnitInfo/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_vga5f")
+
+[node name="Levels" type="VBoxContainer" parent="Information/UnitInfo/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="3" type="Button" parent="Information/UnitInfo/HBoxContainer/Levels"]
+layout_mode = 2
+text = "3"
+
+[node name="2" type="Button" parent="Information/UnitInfo/HBoxContainer/Levels"]
+layout_mode = 2
+text = "2"
+
+[node name="1" type="Button" parent="Information/UnitInfo/HBoxContainer/Levels"]
+layout_mode = 2
+text = "1"
+
+[node name="Cost" type="CenterContainer" parent="Information"]
+layout_mode = 2
+
+[node name="Hbox" type="HBoxContainer" parent="Information/Cost"]
+layout_mode = 2
+
+[node name="CostIcon" type="TextureRect" parent="Information/Cost/Hbox"]
+layout_mode = 2
+texture = ExtResource("5_2xwnp")
+
+[node name="CostLabel" type="Label" parent="Information/Cost/Hbox"]
+layout_mode = 2
+text = "1234"

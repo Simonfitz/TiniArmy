@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitInfo" load_steps=46 format=3 uid="uid://blaenorybpmi2"]
+[gd_resource type="Resource" script_class="UnitInfo" load_steps=47 format=3 uid="uid://bkkamtghbsyn5"]
 
 [ext_resource type="Script" uid="uid://wuif6px56lsy" path="res://resources/units/unit_info.gd" id="1_mx4yh"]
 [ext_resource type="Texture2D" uid="uid://cbqiihmf7247h" path="res://assets/Units/Blue Units/Archer/Archer_Shoot.png" id="2_fr5w4"]
@@ -7,6 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://df4ijgt5660mj" path="res://assets/Units/Red Units/Archer/Archer_Shoot.png" id="5_h5vu5"]
 [ext_resource type="Texture2D" uid="uid://c3kkaecuo4n71" path="res://assets/Units/Red Units/Archer/Archer_Idle.png" id="6_h2h0e"]
 [ext_resource type="Texture2D" uid="uid://5tno2fujmtpu" path="res://assets/Units/Red Units/Archer/Archer_Run.png" id="7_l4bxq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mx4yh"]
+atlas = ExtResource("3_srajt")
+region = Rect2(32, 32, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7uuuv"]
 atlas = ExtResource("2_fr5w4")
@@ -298,6 +302,8 @@ animations = [{
 
 [resource]
 script = ExtResource("1_mx4yh")
+nice_name = "ranger"
+icon = SubResource("AtlasTexture_mx4yh")
 attack = 3
 defense = 1
 health = 6
