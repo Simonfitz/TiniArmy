@@ -7,12 +7,14 @@ const LAYERS = {
 	"red": 2,
 	"blue": 3,
 }
+
 var current_health: int
 var direction: int = 1 # positive or negitive to multiply speed by
 var can_attack: bool = false
 var blocked: bool = false
 var enemy_team: String
 var target: RigidBody2D
+
 @export var team: String
 @export var unit_info: UnitInfo
 @export var unit_state: String = "Moving"
@@ -21,9 +23,7 @@ var target: RigidBody2D
 @onready var ally_ray_cast_2d: RayCast2D = $AllyRayCast2D
 @onready var healthbar: HealthBar = $Healthbar
 @onready var hitmark_container: Node2D = $HitmarkContainer
-@onready var audio_stream_player_2d_spawn: AudioStreamPlayer2D = $AudioStreamPlayer2DSpawn
-
-
+@onready var audio_stream_player_2d_spawn_die: AudioStreamPlayer2D = $AudioStreamPlayer2DSpawnDie
 
 func _ready():
 	current_health = unit_info.health
@@ -31,9 +31,10 @@ func _ready():
 	set_layers()
 	set_masks()
 	healthbar.Setup(unit_info.health, unit_info.health)
-	audio_stream_player_2d_spawn.play()
-	
+
 func _process(_delta):
+	if not GameManager.IsStarted:
+		return
 	enemy_in_range()
 	ally_in_range()
 
@@ -47,9 +48,14 @@ func take_damage(damage):
 	if current_health <= 0:
 		healthbar.hide()
 		die()
-		
 
 func die():
+	animated_sprite_2d.hide()
+	audio_stream_player_2d_spawn_die.finished.connect(on_die_sound_finished)
+	audio_stream_player_2d_spawn_die.play()
+
+func on_die_sound_finished():
+	audio_stream_player_2d_spawn_die.finished.disconnect(on_die_sound_finished)
 	queue_free()
 	
 func set_team(team_name: String):
@@ -67,7 +73,7 @@ func update_values_for_team():
 		animated_sprite_2d.flip_h = true
 		enemy_team = "red"
 	update_range()
-	
+
 func update_range():
 	enemy_ray_cast_2d.target_position = enemy_ray_cast_2d.target_position * direction * unit_info.range
 	ally_ray_cast_2d.target_position = ally_ray_cast_2d.target_position * direction
@@ -81,16 +87,16 @@ func enemy_in_range():
 	else:
 		can_attack = false
 		target = null
-		
+
 func ally_in_range():
 	if ally_ray_cast_2d.is_colliding():
 		blocked = true
 	else:
 		blocked = false
-	
+
 func set_layers():
 	set_collision_layer_value(LAYERS[team], true)
-	
+
 func set_masks():
 	set_collision_mask_value(LAYERS[team], true)
 	ally_ray_cast_2d.set_collision_mask_value(LAYERS[team], true)

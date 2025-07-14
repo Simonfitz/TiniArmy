@@ -41,6 +41,7 @@ var UNITS_RESOURCES = [
 
 func BaseDestroyed(team):
 	OnGameOver.emit(team)
+	GameManager.IsStarted = false
 	
 func _process(delta: float) -> void:
 	if not IsStarted:
