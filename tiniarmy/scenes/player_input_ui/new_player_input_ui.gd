@@ -1,26 +1,27 @@
 extends Panel
-const UNIT_RESOURSE_DIR = "res://resources/units/"
 @export var IsPlayerRed = false
 var selectedUnitIdx = 0
 var selectedLevel = 0
-var units: Array
+var unit_type_array: Array
+var selected_unit: UnitInfo
+@onready var levels: VBoxContainer = $Information/UnitInfo/HBoxContainer/Levels
+@onready var cost_label: Label = $Information/Cost/Hbox/CostLabel
+@onready var unit_icon: TextureRect = $Information/UnitInfo/HBoxContainer/UnitIcon
+@onready var unit_label: Label = $Information/Selection/HBoxContainer/UnitLabel
 
-func _ready() -> void:
-	for unit in load_resources_from_folder():
-		units.append(unit)
 
 func _input(event: InputEvent):
 	if not GameManager.IsStarted:
 		return
-		
+
 	#if (event is InputEventJoypadButton or event is InputEventJoypadMotion) and event.device + 1 == _idx:
 	if (event.is_action_pressed("Up", true) and IsPlayerRed) or (event.is_action_pressed("Up2", true) and not IsPlayerRed):
 		selectedLevel+=1
-		selectedLevel = clamp(selectedLevel,1 ,3)
+		selectedLevel = clamp(selectedLevel,0 ,2)
 		set_level()
 	if (event.is_action_pressed("Down", true) and IsPlayerRed) or (event.is_action_pressed("Down2", true) and not IsPlayerRed):
 		selectedLevel-=1
-		selectedLevel = clamp(selectedLevel,1 ,3)
+		selectedLevel = clamp(selectedLevel,0 ,2)
 		set_level()
 
 	if (event.is_action_pressed("Left", true) and IsPlayerRed) or (event.is_action_pressed("Left2", true) and not IsPlayerRed):
@@ -39,31 +40,14 @@ func _input(event: InputEvent):
 		GameManager.SpawnUnit(team, selectedUnitIdx, selectedLevel)
 
 func set_level():
-	pass
-	
+	for child in levels.get_children():
+		child.self_modulate = Color(1,1,1,0.5)
+	levels.get_children()[selectedLevel].self_modulate = Color(1,1,1,1)
+
 func set_selection():
-	pass
+	unit_type_array = GameManager.get_resouce(selectedUnitIdx)
+	selected_unit = unit_type_array[selectedLevel]
+	cost_label.text = str(selected_unit.cost)
+	unit_icon.texture = unit_type_array[0].icon
+	unit_label.text = unit_type_array[0].nice_name
 	
-func load_resources_from_folder(
-	folder_path := UNIT_RESOURSE_DIR, extensions := ["tres", "res"]
-) -> Array:
-	var resources = []
-	var dir = DirAccess.open(folder_path)
-
-	if dir:
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
-		while file_name != "":
-			if not dir.current_is_dir():
-				for ext in extensions:
-					if file_name.ends_with("." + ext):
-						var full_path = folder_path + "/" + file_name
-						var res = ResourceLoader.load(full_path)
-						if res:
-							resources.append(res)
-			file_name = dir.get_next()
-		dir.list_dir_end()
-	else:
-		push_error("Failed to open folder: " + folder_path)
-
-	return resources

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitInfo" load_steps=52 format=3 uid="uid://dcpp1vtafkypk"]
+[gd_resource type="Resource" script_class="UnitInfo" load_steps=53 format=3 uid="uid://dcpp1vtafkypk"]
 
 [ext_resource type="Script" uid="uid://wuif6px56lsy" path="res://resources/units/unit_info.gd" id="1_q60ux"]
 [ext_resource type="Texture2D" uid="uid://wxahyw5v1c1n" path="res://assets/Units/Blue Units/Lancer/Lancer_Right_Attack.png" id="2_l0gow"]
@@ -7,6 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://bgad8r0bc3fvi" path="res://assets/Units/Red Units/Lancer/Lancer_Right_Attack.png" id="5_7shem"]
 [ext_resource type="Texture2D" uid="uid://ckvqgcyj1h6bs" path="res://assets/Units/Red Units/Lancer/Lancer_Idle.png" id="6_et7od"]
 [ext_resource type="Texture2D" uid="uid://854gg1nil8ml" path="res://assets/Units/Red Units/Lancer/Lancer_Run.png" id="7_ispij"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q60ux"]
+atlas = ExtResource("6_et7od")
+region = Rect2(90, 90, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vyj05"]
 atlas = ExtResource("2_l0gow")
@@ -340,6 +344,8 @@ animations = [{
 
 [resource]
 script = ExtResource("1_q60ux")
+nice_name = "spearman"
+icon = SubResource("AtlasTexture_q60ux")
 attack = 1
 defense = 1
 health = 1

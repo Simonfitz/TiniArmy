@@ -32,6 +32,7 @@ var UNITS_RESOURCES = [
 		preload("res://resources/units/unit_ranger2.tres"),
 		preload("res://resources/units/unit_ranger3.tres")
 	]
+]
 
 
 func BaseDestroyed(team):
@@ -66,3 +67,6 @@ func remove_modifier(team: String, value: int):
 	
 func get_modifier(team: String):
 	return modifiers[team]
+	
+func get_resouce(idx):
+	return UNITS_RESOURCES[idx]

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitInfo" load_steps=46 format=3 uid="uid://bpo8stcbhb7ii"]
+[gd_resource type="Resource" script_class="UnitInfo" load_steps=47 format=3 uid="uid://cn2jtffvw764p"]
 
 [ext_resource type="Script" uid="uid://wuif6px56lsy" path="res://resources/units/unit_info.gd" id="1_fu3oi"]
 [ext_resource type="Texture2D" uid="uid://5ne8uvkq1e5" path="res://assets/Units/Blue Units/Warrior/Warrior_Attack1.png" id="2_xjula"]
@@ -7,6 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://cc37ndrsq5iy8" path="res://assets/Units/Red Units/Warrior/Warrior_Attack1.png" id="5_axau3"]
 [ext_resource type="Texture2D" uid="uid://cufpafxd8sqwu" path="res://assets/Units/Red Units/Warrior/Warrior_Idle.png" id="6_3fg7x"]
 [ext_resource type="Texture2D" uid="uid://dgnoesp8kucru" path="res://assets/Units/Red Units/Warrior/Warrior_Run.png" id="7_xdn2p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fu3oi"]
+atlas = ExtResource("3_yayfh")
+region = Rect2(32, 32, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ynq1b"]
 atlas = ExtResource("2_xjula")
@@ -298,6 +302,8 @@ animations = [{
 
 [resource]
 script = ExtResource("1_fu3oi")
+nice_name = "fighter"
+icon = SubResource("AtlasTexture_fu3oi")
 attack = 3
 defense = 3
 health = 10
