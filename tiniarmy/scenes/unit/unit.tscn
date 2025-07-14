@@ -157,7 +157,7 @@ animations = [{
 }]
 
 [node name="Unit" type="RigidBody2D"]
-collision_layer = 2
+collision_layer = 0
 script = ExtResource("1_fmv3f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -166,7 +166,7 @@ shape = SubResource("RectangleShape2D_fvc8g")
 
 [node name="AttackRayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(100, 0)
-collision_mask = 3
+collision_mask = 0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, 8)

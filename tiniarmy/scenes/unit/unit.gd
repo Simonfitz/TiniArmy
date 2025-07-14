@@ -1,8 +1,14 @@
 class_name Unit
 extends RigidBody2D
 
+const LAYERS = {
+	"blue": 2,
+	"red": 3,
+}
+
 var direction: int = 1 # positive or negitive to multiply speed by
 var can_attack: bool = false
+var enemy_team: String
 @export var team: String
 @export var unit_info: UnitInfo
 @export var unit_state: String = "Moving"
@@ -30,9 +36,11 @@ func set_team(team_name: String):
 	if team == "blue":
 		direction = 1
 		animated_sprite_2d.flip_h = false
+		enemy_team = "red"
 	else:
 		direction = -1
 		animated_sprite_2d.flip_h = true
+		enemy_team = "blue"
 	update_range()
 	
 func update_range():
@@ -44,3 +52,9 @@ func target_in_range():
 	else:
 		can_attack = false
 	
+func set_layers():
+	set_collision_layer_value(LAYERS[team], true)
+	
+func set_masks():
+	set_collision_mask_value(LAYERS[team], true)
+	attack_ray_cast_2d.set_collision_mask_value(LAYERS[enemy_team], true)
