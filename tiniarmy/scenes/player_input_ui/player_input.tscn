@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://bl33qu6hsy0yo"]
+
+[ext_resource type="Script" uid="uid://dgvxy7wmjfqq7" path="res://scenes/player_input_ui/player_input_ui.gd" id="1_5bnvq"]
+
+[node name="PlayerInput" type="Panel"]
+offset_right = 64.0
+offset_bottom = 115.0
+script = ExtResource("1_5bnvq")
+
+[node name="LabelPlayer" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Player 0"
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 2
+offset_left = 2.0
+offset_top = 25.0
+offset_right = 62.0
+offset_bottom = 25.0
+columns = 2
+
+[node name="LabelWarrior" type="Label" parent="GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Warrior"
+
+[node name="LabelWarriorLevel" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "1"
+
+[node name="LabelArcher" type="Label" parent="GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Archer"
+
+[node name="LabelArcherLevel2" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "1"
