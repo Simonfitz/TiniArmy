@@ -50,6 +50,7 @@ func update_values_for_team():
 	
 func update_range():
 	enemy_ray_cast_2d.target_position = enemy_ray_cast_2d.target_position * direction
+	ally_ray_cast_2d.target_position = ally_ray_cast_2d.target_position * direction
 
 func enemy_in_range():
 	if enemy_ray_cast_2d.is_colliding():
