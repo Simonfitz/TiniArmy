@@ -2,7 +2,7 @@ extends Panel
 
 @export var IsPlayerRed = false
 
-@onready var labelPlayer: Label = $VBoxContainer/LabelPlayer
+@onready var labelPlayer: Label = $VBoxContainer/HBoxContainer/LabelPlayer
 @onready var label_gold: Label = $VBoxContainer/HBoxContainer/LabelGold
 
 
