@@ -1,21 +1,54 @@
-[gd_scene load_steps=3 format=3 uid="uid://bl33qu6hsy0yo"]
+[gd_scene load_steps=5 format=3 uid="uid://bl33qu6hsy0yo"]
 
 [ext_resource type="Script" uid="uid://dgvxy7wmjfqq7" path="res://scenes/player_input_ui/player_input_ui.gd" id="1_5bnvq"]
+[ext_resource type="Texture2D" uid="uid://dnpa8v4xix1ty" path="res://assets/UI/Banner_Vertical.png" id="2_gm0h8"]
 [ext_resource type="Texture2D" uid="uid://cb41n8lsch6n8" path="res://assets/UI/coin.png" id="2_vk8el"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gm0h8"]
+
 [node name="PlayerInput" type="Panel"]
-offset_right = 64.0
-offset_bottom = 115.0
+offset_right = 122.0
+offset_bottom = 143.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_gm0h8")
 script = ExtResource("1_5bnvq")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_gm0h8")
 
-[node name="LabelPlayer" type="Label" parent="VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -28.0
+offset_top = 14.0
+offset_right = 28.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="LabelPlayer" type="Label" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Player 0"
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_vk8el")
+
+[node name="LabelGold" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.98, 0.9016, 0.196, 1)
+text = "4"
 
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -38,15 +71,3 @@ text = "Archer"
 [node name="LabelArcherLevel2" type="Label" parent="VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "1"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-texture = ExtResource("2_vk8el")
-
-[node name="LabelGold" type="Label" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.98, 0.9016, 0.196, 1)
-text = "4"
