@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqd76ugl24uh7"]
+
+[ext_resource type="Script" uid="uid://brybw1cyyelpq" path="res://scenes/spawn_point/spawn_point.gd" id="1_6g4at"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0sr1o"]
+size = Vector2(30, 34)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_0sr1o"]
+size = Vector2(10, 10)
+
+[node name="SpawnPoint" type="Node2D"]
+script = ExtResource("1_6g4at")
+
+[node name="SpawnArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnArea2D"]
+shape = SubResource("RectangleShape2D_0sr1o")
+
+[node name="VacantIndicator" type="Sprite2D" parent="SpawnArea2D"]
+position = Vector2(0, 12)
+texture = SubResource("PlaceholderTexture2D_0sr1o")
+
+[connection signal="body_entered" from="SpawnArea2D" to="." method="_on_spawn_area_2d_body_entered"]
+[connection signal="body_exited" from="SpawnArea2D" to="." method="_on_spawn_area_2d_body_exited"]
