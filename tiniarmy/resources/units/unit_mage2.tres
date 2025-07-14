@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="UnitInfo" load_steps=4 format=3 uid="uid://dpqtmgb3vn4wj"]
+
+[ext_resource type="Texture2D" uid="uid://po30pkh5bhey" path="res://assets/Units/Blue Units/Monk/Idle.png" id="1_fc00i"]
+[ext_resource type="Script" uid="uid://wuif6px56lsy" path="res://resources/units/unit_info.gd" id="1_v7two"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nlame"]
+atlas = ExtResource("1_fc00i")
+region = Rect2(32, 32, 128, 128)
+
+[resource]
+script = ExtResource("1_v7two")
+nice_name = "mage"
+icon = SubResource("AtlasTexture_nlame")
+attack = 9
+defense = 0
+health = 4
+range = 2
+movement = 1
+cost = 2
+metadata/_custom_type_script = "uid://wuif6px56lsy"

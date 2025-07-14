@@ -9,7 +9,6 @@ var selected_unit: UnitInfo
 @onready var unit_icon: TextureRect = $Information/UnitInfo/HBoxContainer/UnitIcon
 @onready var unit_label: Label = $Information/Selection/HBoxContainer/UnitLabel
 
-
 func _input(event: InputEvent):
 	if not GameManager.IsStarted:
 		return
@@ -43,11 +42,15 @@ func set_level():
 	for child in levels.get_children():
 		child.self_modulate = Color(1,1,1,0.5)
 	levels.get_children()[selectedLevel].self_modulate = Color(1,1,1,1)
+	set_cost()
 
 func set_selection():
 	unit_type_array = GameManager.get_resouce(selectedUnitIdx)
 	selected_unit = unit_type_array[selectedLevel]
-	cost_label.text = str(selected_unit.cost)
 	unit_icon.texture = unit_type_array[0].icon
 	unit_label.text = unit_type_array[0].nice_name
+	set_cost()
+	
+func set_cost():
+	cost_label.text = str(selected_unit.cost)
 	

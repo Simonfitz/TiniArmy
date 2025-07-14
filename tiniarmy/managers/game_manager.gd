@@ -22,15 +22,19 @@ var UNITS_RESOURCES = [
 		preload("res://resources/units/unit_fighter3.tres")
 	],
 	[
-		preload("res://resources/units/unit_mage.tres")
-	],
-	[
-		preload("res://resources/units/unit_spearman.tres")
+		preload("res://resources/units/unit_mage1.tres"),
+		preload("res://resources/units/unit_mage2.tres"),
+		preload("res://resources/units/unit_mage3.tres")
 	],
 	[
 		preload("res://resources/units/unit_ranger1.tres"),
 		preload("res://resources/units/unit_ranger2.tres"),
 		preload("res://resources/units/unit_ranger3.tres")
+	],
+	[
+		preload("res://resources/units/unit_spearman1.tres"),
+		preload("res://resources/units/unit_spearman2.tres"),
+		preload("res://resources/units/unit_spearman3.tres")
 	]
 ]
 
