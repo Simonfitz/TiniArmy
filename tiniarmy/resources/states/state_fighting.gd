@@ -12,14 +12,15 @@ var last_direction := DIRECTIONS.LEFT
 @onready var animated_sprite_2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
 
 func enter():
-	animated_sprite_2d.play("fighting")
+	animated_sprite_2d.play("idle")
 
 func update(delta):
 	attack_timer += delta
 	if attack_timer >= attack_cooldown:
 		attack_timer = 0.0  # Reset the timer
-		if unit.target:
-			unit.target.take_damage(unit.unit_info.attack)
+		animated_sprite_2d.play("fighting")
+		await animated_sprite_2d.animation_finished
+		unit.target.take_damage(unit.unit_info.attack)
 	
 	if not unit.can_attack:
 		transition.emit(self, "Idle")

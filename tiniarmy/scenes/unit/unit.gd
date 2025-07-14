@@ -62,8 +62,10 @@ func update_range():
 
 func enemy_in_range():
 	if enemy_ray_cast_2d.is_colliding():
-		can_attack = true
 		target = enemy_ray_cast_2d.get_collider()
+		if target.team == enemy_team:
+			can_attack = true
+		
 	else:
 		can_attack = false
 		target = null
