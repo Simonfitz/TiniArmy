@@ -24,6 +24,9 @@ func _process(delta: float) -> void:
 	label_gold.text = str(GameManager.PlayerRedGold) if IsPlayerRed else str(GameManager.PlayerBlueGold)
 
 func _input(event: InputEvent):
+	if not GameManager.IsStarted:
+		return
+		
 	#if (event is InputEventJoypadButton or event is InputEventJoypadMotion) and event.device + 1 == _idx:
 	if (event.is_action_pressed("Up", true) and IsPlayerRed) or (event.is_action_pressed("Up2", true) and not IsPlayerRed):
 		selectedUnitIdx -= 1

@@ -5,9 +5,11 @@ const GOLD_TIME = 1
 var gold_timer = 0
 
 signal OnSpawnUnit
+signal OnGameOver
 
 var PlayerRedGold = 0
 var PlayerBlueGold = 0
+var IsStarted = false
 
 var UNITS_RESOURCES = [
 	[
@@ -19,10 +21,13 @@ var UNITS_RESOURCES = [
 ]
 
 
-func BaseDestroyed():
-	print("do something")
+func BaseDestroyed(team):
+	OnGameOver.emit(team)
 	
 func _process(delta: float) -> void:
+	if not IsStarted:
+		return
+		
 	gold_timer  += delta
 	if gold_timer > GOLD_TIME:
 		PlayerRedGold += 1

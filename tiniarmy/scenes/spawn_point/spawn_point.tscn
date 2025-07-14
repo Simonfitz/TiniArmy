@@ -18,6 +18,7 @@ collision_mask = 7
 shape = SubResource("RectangleShape2D_0sr1o")
 
 [node name="VacantIndicator" type="Sprite2D" parent="SpawnArea2D"]
+visible = false
 position = Vector2(0, 12)
 texture = SubResource("PlaceholderTexture2D_0sr1o")
 
