@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://bu3ftjyvcyiyr"]
+
+[ext_resource type="Texture2D" uid="uid://bjmi414571ea1" path="res://scenes/healthbar/healthbar_bg.png" id="1_aktbv"]
+[ext_resource type="Texture2D" uid="uid://by1lq01mmxjcl" path="res://scenes/healthbar/healthbar.png" id="2_yqria"]
+[ext_resource type="Script" uid="uid://bc8oa5e1bioky" path="res://scenes/healthbar/healthbar.gd" id="3_vtbtc"]
+
+[node name="Healthbar" type="TextureProgressBar"]
+offset_right = 300.0
+offset_bottom = 24.0
+scale = Vector2(0.2, 0.3)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_under = ExtResource("1_aktbv")
+texture_progress = ExtResource("2_yqria")
+script = ExtResource("3_vtbtc")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 5.0
+offset_top = -53.3333
+offset_right = 295.0
+offset_bottom = 11.6667
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+text = "12345"
+vertical_alignment = 2

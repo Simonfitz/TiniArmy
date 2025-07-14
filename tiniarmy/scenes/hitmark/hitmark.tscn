@@ -1,0 +1,63 @@
+[gd_scene load_steps=11 format=3 uid="uid://c317s1f6niwd4"]
+
+[ext_resource type="Script" uid="uid://naqv5h80k6c5" path="res://scenes/hitmark/hitmark.gd" id="1_1lpv5"]
+[ext_resource type="Texture2D" uid="uid://bhxfivwmuptvl" path="res://scenes/hitmark/hit0.png" id="1_o3d5m"]
+[ext_resource type="Texture2D" uid="uid://brf1rt18yfvn" path="res://scenes/hitmark/hit1.png" id="2_514k1"]
+[ext_resource type="Texture2D" uid="uid://byf60vjch32a5" path="res://scenes/hitmark/hit2.png" id="3_1bgf4"]
+[ext_resource type="Texture2D" uid="uid://ma0rkb0jy013" path="res://scenes/hitmark/hit3.png" id="4_vuchv"]
+[ext_resource type="Texture2D" uid="uid://ch1hjvs3bodx3" path="res://scenes/hitmark/hit4.png" id="5_hew2r"]
+[ext_resource type="Texture2D" uid="uid://djoervb6qoroi" path="res://scenes/hitmark/hit5.png" id="6_05b12"]
+[ext_resource type="Texture2D" uid="uid://c3imjr5m5cl3" path="res://scenes/hitmark/hit6.png" id="7_gga7q"]
+[ext_resource type="Texture2D" uid="uid://c0kblq1s0vrh7" path="res://scenes/hitmark/hit7.png" id="8_wsudh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6thkx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_o3d5m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_514k1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1bgf4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_vuchv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_hew2r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_05b12")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_gga7q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_wsudh")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"empty",
+"speed": 5.0
+}]
+
+[node name="HitAnimatedSprite2D2" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_6thkx")
+autoplay = "default"
+script = ExtResource("1_1lpv5")
+
+[node name="LabelDmg" type="Label" parent="."]
+offset_left = -4.0
+offset_top = -5.0
+offset_right = 2.0
+offset_bottom = 15.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "1"
+horizontal_alignment = 1
