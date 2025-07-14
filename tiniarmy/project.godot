@@ -21,14 +21,15 @@ GameManager="*res://managers/game_manager.gd"
 
 [display]
 
-window/size/viewport_width=640
-window/size/viewport_height=360
+window/size/viewport_width=1280
+window/size/viewport_height=720
 window/stretch/mode="viewport"
 
 [gui]
 
 theme/custom="uid://btwkh1aqxlnjm"
 theme/custom_font="uid://brm77vy544kow"
+theme/default_font_multichannel_signed_distance_field=true
 
 [input]
 
@@ -66,4 +67,6 @@ Spawn={
 
 [rendering]
 
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
 2d/snap/snap_2d_transforms_to_pixel=true

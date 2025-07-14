@@ -39,7 +39,7 @@ layout_mode = 2
 
 [node name="LabelPlayer" type="Label" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "Player 0"
+text = "Plyr"
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -52,7 +52,10 @@ text = "4"
 
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
 layout_mode = 2
-columns = 2
+columns = 3
+
+[node name="TextureHand0" type="TextureButton" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
 
 [node name="LabelWarrior" type="Label" parent="VBoxContainer/GridContainer"]
 layout_mode = 2
@@ -62,6 +65,9 @@ text = "Warrior"
 [node name="LabelWarriorLevel" type="Label" parent="VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "1"
+
+[node name="TextureHand1" type="TextureButton" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
 
 [node name="LabelArcher" type="Label" parent="VBoxContainer/GridContainer"]
 layout_mode = 2
