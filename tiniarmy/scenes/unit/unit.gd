@@ -49,7 +49,7 @@ func update_values_for_team():
 	update_range()
 	
 func update_range():
-	enemy_ray_cast_2d.target_position = enemy_ray_cast_2d.target_position * direction
+	enemy_ray_cast_2d.target_position = enemy_ray_cast_2d.target_position * direction * unit_info.range
 	ally_ray_cast_2d.target_position = ally_ray_cast_2d.target_position * direction
 
 func enemy_in_range():
