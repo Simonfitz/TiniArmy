@@ -2,8 +2,8 @@ class_name Unit
 extends RigidBody2D
 
 const LAYERS = {
-	"blue": 2,
-	"red": 3,
+	"red": 2,
+	"blue": 3,
 }
 
 var direction: int = 1 # positive or negitive to multiply speed by
@@ -18,9 +18,10 @@ var enemy_team: String
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	set_team(team)
 	animated_sprite_2d.sprite_frames = unit_info.spriteframes
-	animated_sprite_2d.play("moving")
+	update_values_for_team()
+	set_layers()
+	set_masks()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -30,17 +31,19 @@ func _process(_delta):
 
 func die():
 	queue_free()
-
+	
 func set_team(team_name: String):
 	team = team_name
-	if team == "blue":
+
+func update_values_for_team():
+	if team == "red":
 		direction = 1
 		animated_sprite_2d.flip_h = false
-		enemy_team = "red"
+		enemy_team = "blue"
 	else:
 		direction = -1
 		animated_sprite_2d.flip_h = true
-		enemy_team = "blue"
+		enemy_team = "red"
 	update_range()
 	
 func update_range():
