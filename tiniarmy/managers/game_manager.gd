@@ -33,10 +33,8 @@ func SpawnUnit(team, unitIdx, unitLevel):
 	var unit_data: UnitInfo = UNITS_RESOURCES[unitIdx][unitLevel]
 
 	if team == "red" and PlayerRedGold >= unit_data.cost:
-		PlayerRedGold -= unit_data.cost
 		OnSpawnUnit.emit(team, unit_data)
 	if team != "red" and PlayerBlueGold >= unit_data.cost:
-		PlayerBlueGold -= unit_data.cost
 		OnSpawnUnit.emit(team, unit_data)
 
 func GetUnitCost(unitIdx, unitLevel) -> int:

@@ -14,6 +14,8 @@ func _process(delta: float) -> void:
 
 func on_unit_spawn(team: String, unit_data: UnitInfo):
 	if team == "red":
-		red_spawn.TrySpawn(unit_data, UnitScene)
+		if red_spawn.TrySpawn(unit_data, UnitScene):
+			GameManager.PlayerRedGold -= unit_data.cost
 	else:
-		blue_spawn.TrySpawn(unit_data, UnitScene)
+		if blue_spawn.TrySpawn(unit_data, UnitScene):
+			GameManager.PlayerBlueGold -= unit_data.cost
