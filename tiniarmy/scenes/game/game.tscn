@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://c1q4ixvw878vj"]
+[gd_scene load_steps=12 format=4 uid="uid://c1q4ixvw878vj"]
 
 [ext_resource type="Script" uid="uid://458ollabhikt" path="res://scenes/game/game.gd" id="1_0sr1o"]
 [ext_resource type="PackedScene" uid="uid://bl33qu6hsy0yo" path="res://scenes/player_input_ui/player_input.tscn" id="1_sul5r"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://de0hsbc5ndh3v" path="res://scenes/castle/castle.tscn" id="5_lfrn8"]
 [ext_resource type="Texture2D" uid="uid://ckwak3ye4legr" path="res://assets/Units/House/Castle_Red.png" id="6_bdhmt"]
 [ext_resource type="Texture2D" uid="uid://c72sfcso36b65" path="res://assets/Units/House/Castle_Blue.png" id="7_87uf6"]
+[ext_resource type="PackedScene" uid="uid://cmp8j07a7wjvm" path="res://scenes/control_point/control_point.tscn" id="8_87uf6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0sr1o"]
 texture = ExtResource("2_7h61r")
@@ -1307,6 +1308,15 @@ sprite_texture = ExtResource("6_bdhmt")
 position = Vector2(1136, 510)
 team = "blue"
 sprite_texture = ExtResource("7_87uf6")
+
+[node name="ControlPoint" parent="." instance=ExtResource("8_87uf6")]
+position = Vector2(455, 566)
+
+[node name="ControlPoint2" parent="." instance=ExtResource("8_87uf6")]
+position = Vector2(618, 568)
+
+[node name="ControlPoint3" parent="." instance=ExtResource("8_87uf6")]
+position = Vector2(803, 565)
 
 [node name="SpawnPoints" type="Node2D" parent="."]
 
