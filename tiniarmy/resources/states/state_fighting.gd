@@ -12,6 +12,11 @@ var is_attacking = false
 
 func enter():
 	animated_sprite_2d.play("idle")
+	unit.freeze = true
+	
+func exit():
+	unit.freeze = false
+	exited.emit()
 
 func update(delta):
 	if not is_attacking:
