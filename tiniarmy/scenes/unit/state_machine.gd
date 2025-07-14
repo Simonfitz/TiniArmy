@@ -32,11 +32,9 @@ func set_state(new_state_name):
 	current_state = states[new_state_name]
 	current_state.enter()
 	unit.unit_state = new_state_name
-	print_debug("Set state:", current_state.name)
 
 
 func state_transition(state_called_from: State, new_state_name: String):
-	print_debug("Transition called from ", state_called_from.name, " to ", new_state_name)
 	# Fast fail invalid states
 	if state_called_from != current_state:
 		print_debug("A non-active state has called a transition. Ignoring.")

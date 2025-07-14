@@ -32,7 +32,7 @@ func update(delta):
 func walk():
 	if can_move():
 		animated_sprite_2d.play("moving")
-		unit.linear_velocity = BASE_MOVE_DISTANCE * unit.direction
+		unit.linear_velocity = BASE_MOVE_DISTANCE * unit.direction * unit.unit_info.movement
 
 
 func can_move():
