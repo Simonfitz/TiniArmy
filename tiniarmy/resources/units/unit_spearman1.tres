@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://854gg1nil8ml" path="res://assets/Units/Red Units/Lancer/Lancer_Run.png" id="7_r7tvq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q60ux"]
-atlas = ExtResource("1_71tum")
+atlas = ExtResource("4_ligna")
 region = Rect2(90, 90, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vyj05"]

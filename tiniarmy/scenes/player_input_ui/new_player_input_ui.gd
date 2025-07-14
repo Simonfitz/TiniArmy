@@ -9,6 +9,9 @@ var selected_unit: UnitInfo
 @onready var unit_icon: TextureRect = $Information/UnitInfo/HBoxContainer/UnitIcon
 @onready var unit_label: Label = $Information/Selection/HBoxContainer/UnitLabel
 
+func _ready() -> void:
+	update_gui()
+
 func _input(event: InputEvent):
 	if not GameManager.IsStarted:
 		return
@@ -17,38 +20,36 @@ func _input(event: InputEvent):
 	if (event.is_action_pressed("Up", true) and IsPlayerRed) or (event.is_action_pressed("Up2", true) and not IsPlayerRed):
 		selectedLevel+=1
 		selectedLevel = clamp(selectedLevel,0 ,2)
-		set_level()
+		update_gui()
 	if (event.is_action_pressed("Down", true) and IsPlayerRed) or (event.is_action_pressed("Down2", true) and not IsPlayerRed):
 		selectedLevel-=1
 		selectedLevel = clamp(selectedLevel,0 ,2)
-		set_level()
+		update_gui()
 
 	if (event.is_action_pressed("Left", true) and IsPlayerRed) or (event.is_action_pressed("Left2", true) and not IsPlayerRed):
 		selectedUnitIdx-=1
 		if selectedUnitIdx < 0:
 			selectedUnitIdx = 3
-		set_selection()
+		update_gui()
 	if (event.is_action_pressed("Right", true) and IsPlayerRed) or (event.is_action_pressed("Right2", true) and not IsPlayerRed):
 		selectedUnitIdx+=1
 		if selectedUnitIdx > 3:
 			selectedUnitIdx = 0
-		set_selection()
+		update_gui()
 
 	if (event.is_action_pressed("Spawn", true) and IsPlayerRed) or (event.is_action_pressed("Spawn2", true) and not IsPlayerRed):
 		var team = "red" if IsPlayerRed else "blue"
 		GameManager.SpawnUnit(team, selectedUnitIdx, selectedLevel)
 
-func set_level():
-	for child in levels.get_children():
-		child.self_modulate = Color(1,1,1,0.5)
-	levels.get_children()[selectedLevel].self_modulate = Color(1,1,1,1)
-	set_cost()
 
-func set_selection():
+func update_gui():
 	unit_type_array = GameManager.get_resouce(selectedUnitIdx)
 	selected_unit = unit_type_array[selectedLevel]
 	unit_icon.texture = unit_type_array[0].icon
 	unit_label.text = unit_type_array[0].nice_name
+	for child in levels.get_children():
+		child.self_modulate = Color(1,1,1,0.5)
+	levels.get_children()[selectedLevel].self_modulate = Color(1,1,1,1)
 	set_cost()
 	
 func set_cost():
