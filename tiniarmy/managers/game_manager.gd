@@ -21,7 +21,13 @@ var UNITS_RESOURCES = [
 	],
 	[
 		preload("res://resources/units/unit_ranger.tres")
-	]
+	],
+	[
+		preload("res://resources/units/unit_mage.tres")
+	],
+	[
+		preload("res://resources/units/unit_spearman.tres")
+	],
 ]
 
 
