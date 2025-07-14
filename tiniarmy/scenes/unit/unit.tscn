@@ -207,6 +207,7 @@ offset_bottom = -38.0
 position = Vector2(2, -11)
 
 [node name="StateLabel" type="Label" parent="."]
+visible = false
 offset_left = -34.0
 offset_top = -68.0
 offset_right = 44.0

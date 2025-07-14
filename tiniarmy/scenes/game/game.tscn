@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://ccoxx5g7swqxx" path="res://assets/Tilemaps/cloud_tileset.png" id="10_3xj4h"]
 [ext_resource type="Texture2D" uid="uid://bxrrm37r4ieso" path="res://assets/Tilemaps/Water.png" id="10_pg2xm"]
 [ext_resource type="AudioStream" uid="uid://kgx5n3rmjxjv" path="res://assets/sounds/bg.mp3" id="17_5v6r0"]
-[ext_resource type="PackedScene" path="res://scenes/player_input_ui/new_player_input_ui.tscn" id="18_uyinl"]
+[ext_resource type="PackedScene" uid="uid://dhr2fvrjrn1kq" path="res://scenes/player_input_ui/new_player_input_ui.tscn" id="18_uyinl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gc57s"]
 texture = ExtResource("5_otnwt")
