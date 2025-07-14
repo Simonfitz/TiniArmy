@@ -351,6 +351,7 @@ defense = 1
 health = 6
 range = 2
 movement = 1
+speed = 2
 cost = 2
 spriteframes_red = SubResource("SpriteFrames_dbnbs")
 spriteframes_blue = SubResource("SpriteFrames_ewnj3")

@@ -78,10 +78,14 @@ func update_values_for_team():
 		animated_sprite_2d.flip_h = true
 		enemy_team = "red"
 	update_range()
+	update_speed()
 
 func update_range():
 	enemy_ray_cast_2d.target_position = enemy_ray_cast_2d.target_position * direction * unit_info.range
 	ally_ray_cast_2d.target_position = ally_ray_cast_2d.target_position * direction
+	
+func update_speed():
+	animated_sprite_2d.speed_scale = unit_info.speed
 
 func enemy_in_range():
 	if enemy_ray_cast_2d.is_colliding():
