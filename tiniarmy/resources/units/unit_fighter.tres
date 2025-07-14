@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="UnitInfo" load_steps=2 format=3 uid="uid://cwuimq7vx6m6q"]
+
+[ext_resource type="Script" uid="uid://wuif6px56lsy" path="res://resources/units/unit_info.gd" id="1_ytyk8"]
+
+[resource]
+script = ExtResource("1_ytyk8")
+attack = 1
+defense = 1
+health = 1
+range = 1
+movement = 1
+metadata/_custom_type_script = "uid://wuif6px56lsy"
