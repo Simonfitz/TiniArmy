@@ -16,9 +16,10 @@ func enter():
 
 func update(delta):
 	attack_timer += delta
-
 	if attack_timer >= attack_cooldown:
 		attack_timer = 0.0  # Reset the timer
+		if unit.target:
+			unit.target.take_damage(unit.unit_info.attack)
 	
-	#TODO
-	# if no valid enemy, transition state
+	if not unit.can_attack:
+		transition.emit(self, "Idle")

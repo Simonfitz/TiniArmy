@@ -5,11 +5,12 @@ const LAYERS = {
 	"red": 2,
 	"blue": 3,
 }
-
+var current_health: int
 var direction: int = 1 # positive or negitive to multiply speed by
 var can_attack: bool = false
 var blocked: bool = false
 var enemy_team: String
+var target: RigidBody2D
 @export var team: String
 @export var unit_info: UnitInfo
 @export var unit_state: String = "Moving"
@@ -20,7 +21,7 @@ var enemy_team: String
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	animated_sprite_2d.sprite_frames = unit_info.spriteframes
+	current_health = unit_info.health
 	update_values_for_team()
 	set_layers()
 	set_masks()
@@ -31,6 +32,11 @@ func _process(_delta):
 	enemy_in_range()
 	ally_in_range()
 
+func take_damage(damage):
+	current_health -= damage
+	if current_health <= 0:
+		die()
+
 func die():
 	queue_free()
 	
@@ -39,10 +45,12 @@ func set_team(team_name: String):
 
 func update_values_for_team():
 	if team == "red":
+		animated_sprite_2d.sprite_frames = unit_info.spriteframes_red
 		direction = 1
 		animated_sprite_2d.flip_h = false
 		enemy_team = "blue"
 	else:
+		animated_sprite_2d.sprite_frames = unit_info.spriteframes_blue
 		direction = -1
 		animated_sprite_2d.flip_h = true
 		enemy_team = "red"
@@ -55,8 +63,10 @@ func update_range():
 func enemy_in_range():
 	if enemy_ray_cast_2d.is_colliding():
 		can_attack = true
+		target = enemy_ray_cast_2d.get_collider()
 	else:
 		can_attack = false
+		target = null
 		
 func ally_in_range():
 	if ally_ray_cast_2d.is_colliding():
