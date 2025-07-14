@@ -1299,6 +1299,7 @@ shape = SubResource("RectangleShape2D_7h61r")
 
 [node name="RedSpawn" parent="SpawnPoints" instance=ExtResource("4_kelw5")]
 position = Vector2(71, 281)
+IsRed = true
 
 [node name="BlueSpawn" parent="SpawnPoints" instance=ExtResource("4_kelw5")]
 position = Vector2(589, 281)

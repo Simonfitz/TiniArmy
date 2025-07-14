@@ -1,12 +1,13 @@
 extends Panel
 
 @export var IsPlayerRed = false
-@onready var labelPlayer: Label = $LabelPlayer
+
+@onready var labelPlayer: Label = $VBoxContainer/LabelPlayer
+@onready var label_gold: Label = $VBoxContainer/HBoxContainer/LabelGold
+
 
 func _ready() -> void:
 	labelPlayer.text = "Red" if IsPlayerRed else "Blue"
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	label_gold.text = str(GameManager.PlayerRedGold) if IsPlayerRed else str(GameManager.PlayerBlueGold)
