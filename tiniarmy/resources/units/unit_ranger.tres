@@ -145,7 +145,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_c8ws2")
 }],
 "loop": true,
-"name": &"walking",
+"name": &"moving",
 "speed": 5.0
 }]
 

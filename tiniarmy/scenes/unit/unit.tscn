@@ -161,10 +161,15 @@ collision_layer = 2
 script = ExtResource("1_fmv3f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -8)
+position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_fvc8g")
 
+[node name="AttackRayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(100, 0)
+collision_mask = 3
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, 8)
 sprite_frames = SubResource("SpriteFrames_bhlit")
 animation = &"idle"
 
@@ -180,6 +185,6 @@ metadata/_custom_type_script = "uid://c1p7wied0o3ge"
 script = ExtResource("3_bhlit")
 metadata/_custom_type_script = "uid://duaiwkoi7fg5x"
 
-[node name="StateIdle" type="Node" parent="StateMachine"]
+[node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("5_vgvef")
 metadata/_custom_type_script = "uid://cunmh5xsurow8"

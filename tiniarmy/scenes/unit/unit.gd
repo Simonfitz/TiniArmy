@@ -1,21 +1,46 @@
 class_name Unit
 extends RigidBody2D
 
-var unit_info: UnitInfo
-var unit_state: String = "Moving"
+var direction: int = 1 # positive or negitive to multiply speed by
+var can_attack: bool = false
+@export var team: String
+@export var unit_info: UnitInfo
+@export var unit_state: String = "Moving"
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var attack_ray_cast_2d: RayCast2D = $AttackRayCast2D
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	set_team(team)
 	animated_sprite_2d.sprite_frames = unit_info.spriteframes
 	animated_sprite_2d.play("moving")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	pass
+	target_in_range()
 
 
 func die():
 	queue_free()
+
+func set_team(team_name: String):
+	team = team_name
+	if team == "blue":
+		direction = 1
+		animated_sprite_2d.flip_h = false
+	else:
+		direction = -1
+		animated_sprite_2d.flip_h = true
+	update_range()
+	
+func update_range():
+	attack_ray_cast_2d.target_position = attack_ray_cast_2d.target_position * direction
+
+func target_in_range():
+	if attack_ray_cast_2d.is_colliding():
+		can_attack = true
+	else:
+		can_attack = false
+	

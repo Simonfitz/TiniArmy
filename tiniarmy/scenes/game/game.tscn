@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://c1q4ixvw878vj"]
+[gd_scene load_steps=9 format=4 uid="uid://c1q4ixvw878vj"]
 
 [ext_resource type="Script" uid="uid://458ollabhikt" path="res://scenes/game/game.gd" id="1_0sr1o"]
 [ext_resource type="PackedScene" uid="uid://bl33qu6hsy0yo" path="res://scenes/player_input_ui/player_input.tscn" id="1_sul5r"]
-[ext_resource type="Texture2D" uid="uid://rj2cotai5yg7" path="res://assets/Tilemaps/Tilemap_color1.png" id="2_7h61r"]
+[ext_resource type="Texture2D" uid="uid://bkglpynm022t3" path="res://assets/Tilemaps/Tilemap_color1.png" id="2_7h61r"]
+[ext_resource type="PackedScene" uid="uid://bf0gdckk8p50d" path="res://scenes/unit/unit.tscn" id="4_kelw5"]
+[ext_resource type="Resource" uid="uid://drl7ftytstrxv" path="res://resources/units/unit_fighter.tres" id="5_lfrn8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0sr1o"]
 texture = ExtResource("2_7h61r")
@@ -1293,3 +1295,13 @@ position = Vector2(17, 305)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapLayer/StaticBody2D"]
 position = Vector2(295, 25)
 shape = SubResource("RectangleShape2D_7h61r")
+
+[node name="Unit" parent="." instance=ExtResource("4_kelw5")]
+position = Vector2(72, 254)
+team = "blue"
+unit_info = ExtResource("5_lfrn8")
+
+[node name="Unit2" parent="." instance=ExtResource("4_kelw5")]
+position = Vector2(565, 251)
+team = "red"
+unit_info = ExtResource("5_lfrn8")
