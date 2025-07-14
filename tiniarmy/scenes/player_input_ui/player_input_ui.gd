@@ -14,7 +14,7 @@ extends Panel
 @onready var label_level_archer: Label = $VBoxContainer/GridContainerArcher/LabelLevel
 
 var selectedUnitIdx = 0
-var selectedLevel = 1
+var selectedLevel = 0
 
 func _ready() -> void:
 	labelPlayer.text = "Red" if IsPlayerRed else "Blue"

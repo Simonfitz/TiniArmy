@@ -303,6 +303,7 @@ defense = 1
 health = 1
 range = 3
 movement = 1
+cost = 1
 spriteframes_red = SubResource("SpriteFrames_7uuuv")
 spriteframes_blue = SubResource("SpriteFrames_uiajf")
 metadata/_custom_type_script = "uid://wuif6px56lsy"

@@ -36,4 +36,4 @@ func _on_spawn_area_2d_body_exited(body: Node2D) -> void:
 		return
 		
 	if body.team == team_name:
-		is_vacant = false
+		is_vacant = true

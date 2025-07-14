@@ -12,6 +12,7 @@ size = Vector2(10, 10)
 script = ExtResource("1_6g4at")
 
 [node name="SpawnArea2D" type="Area2D" parent="."]
+collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnArea2D"]
 shape = SubResource("RectangleShape2D_0sr1o")
