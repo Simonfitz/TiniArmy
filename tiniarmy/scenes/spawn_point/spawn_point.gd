@@ -15,7 +15,6 @@ func _process(delta: float) -> void:
 
 func TrySpawn(unitInfo: UnitInfo, unitScene: PackedScene) -> bool:
 	if not is_vacant:
-		print("Something in the way")
 		return false
 	
 	var unit: Unit = unitScene.instantiate()

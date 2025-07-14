@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://c1q4ixvw878vj"]
+[gd_scene load_steps=34 format=4 uid="uid://c1q4ixvw878vj"]
 
 [ext_resource type="Script" uid="uid://458ollabhikt" path="res://scenes/game/game.gd" id="1_0sr1o"]
 [ext_resource type="Texture2D" uid="uid://bkglpynm022t3" path="res://assets/Tilemaps/Tilemap_color1.png" id="2_7h61r"]
@@ -16,7 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://ccoxx5g7swqxx" path="res://assets/Tilemaps/cloud_tileset.png" id="10_3xj4h"]
 [ext_resource type="Texture2D" uid="uid://bxrrm37r4ieso" path="res://assets/Tilemaps/Water.png" id="10_pg2xm"]
 [ext_resource type="AudioStream" uid="uid://kgx5n3rmjxjv" path="res://assets/sounds/bg.mp3" id="17_5v6r0"]
-[ext_resource type="PackedScene" uid="uid://dhr2fvrjrn1kq" path="res://scenes/player_input_ui/new_player_input_ui.tscn" id="18_uyinl"]
+[ext_resource type="PackedScene" path="res://scenes/player_input_ui/new_player_input_ui.tscn" id="18_10c2w"]
+[ext_resource type="AudioStream" uid="uid://ch5i1lqn0omcw" path="res://assets/sounds/woosh-ch.mp3" id="18_uyinl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gc57s"]
 texture = ExtResource("5_otnwt")
@@ -2824,7 +2825,7 @@ position = Vector2(1800, 598)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_5v6r0")
-volume_db = -23.009
+volume_db = -10.124
 autoplay = true
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
@@ -2832,8 +2833,10 @@ position = Vector2(946, 349)
 current = true
 
 [node name="AudioStreamPlayerReady" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_uyinl")
+volume_db = -2.761
 
-[node name="NewPlayerInputUi" parent="." instance=ExtResource("18_uyinl")]
+[node name="NewPlayerInputUi" parent="." instance=ExtResource("18_10c2w")]
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -2845,7 +2848,7 @@ grow_horizontal = 1
 grow_vertical = 1
 IsPlayerRed = true
 
-[node name="NewPlayerInputUi2" parent="." instance=ExtResource("18_uyinl")]
+[node name="NewPlayerInputUi2" parent="." instance=ExtResource("18_10c2w")]
 offset_left = 1821.0
 offset_top = 85.0
 offset_right = 1821.0

@@ -3,10 +3,9 @@ extends State
 
 enum DIRECTIONS { LEFT, RIGHT }
 
-var attack_timer := 0.0
-var attack_cooldown := 1.0
 var walk_timer := 0.0
 var last_direction := DIRECTIONS.LEFT
+var is_attacking = false
 
 @onready var unit: RigidBody2D = $"../.."
 @onready var animated_sprite_2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
@@ -15,12 +14,12 @@ func enter():
 	animated_sprite_2d.play("idle")
 
 func update(delta):
-	attack_timer += delta
-	if attack_timer >= attack_cooldown:
-		attack_timer = 0.0  # Reset the timer
+	if not is_attacking:
+		is_attacking = true
 		animated_sprite_2d.play("fighting")
 		await animated_sprite_2d.animation_finished
 		unit.target.take_damage(unit.unit_info.attack)
+		is_attacking = false
 	
 	if not unit.can_attack:
 		transition.emit(self, "Idle")
