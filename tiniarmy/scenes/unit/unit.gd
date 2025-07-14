@@ -14,6 +14,7 @@ var can_attack: bool = false
 var blocked: bool = false
 var enemy_team: String
 var target: RigidBody2D
+var is_dead:= false
 
 @export var team: String
 @export var unit_info: UnitInfo
@@ -39,6 +40,9 @@ func _process(_delta):
 	ally_in_range()
 
 func take_damage(damage):
+	if is_dead:
+		return
+		
 	healthbar.show()
 	current_health -= damage
 	healthbar.SetHP(current_health)
@@ -46,6 +50,7 @@ func take_damage(damage):
 	hitmarkObj.SetDmg(damage)
 	hitmark_container.add_child(hitmarkObj)
 	if current_health <= 0:
+		is_dead = true
 		healthbar.hide()
 		die()
 

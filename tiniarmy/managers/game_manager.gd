@@ -1,6 +1,6 @@
 extends Node
 
-const GOLD_TIME = 1
+const GOLD_TIME = 5
 const BASE_GOLD_VALUE = 1
 var gold_timer = 0
 

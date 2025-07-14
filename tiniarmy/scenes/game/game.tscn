@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://c1q4ixvw878vj"]
+[gd_scene load_steps=33 format=4 uid="uid://c1q4ixvw878vj"]
 
 [ext_resource type="Script" uid="uid://458ollabhikt" path="res://scenes/game/game.gd" id="1_0sr1o"]
 [ext_resource type="Texture2D" uid="uid://bkglpynm022t3" path="res://assets/Tilemaps/Tilemap_color1.png" id="2_7h61r"]
@@ -16,8 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://ccoxx5g7swqxx" path="res://assets/Tilemaps/cloud_tileset.png" id="10_3xj4h"]
 [ext_resource type="Texture2D" uid="uid://bxrrm37r4ieso" path="res://assets/Tilemaps/Water.png" id="10_pg2xm"]
 [ext_resource type="AudioStream" uid="uid://kgx5n3rmjxjv" path="res://assets/sounds/bg.mp3" id="17_5v6r0"]
-[ext_resource type="AudioStream" uid="uid://ch5i1lqn0omcw" path="res://assets/sounds/woosh-ch.mp3" id="18_uyinl"]
-[ext_resource type="PackedScene" uid="uid://dhr2fvrjrn1kq" path="res://scenes/player_input_ui/new_player_input_ui.tscn" id="18_uyinl"]
+[ext_resource type="PackedScene" path="res://scenes/player_input_ui/new_player_input_ui.tscn" id="18_uyinl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gc57s"]
 texture = ExtResource("5_otnwt")
@@ -2564,6 +2563,67 @@ sources/0 = SubResource("TileSetAtlasSource_0sr1o")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7h61r"]
 size = Vector2(1919, 60)
 
+[sub_resource type="Animation" id="Animation_uyinl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/GameStartPanel/VBoxContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(549, 411)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/GameStartPanel/Label:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(687, 330)]
+}
+
+[sub_resource type="Animation" id="Animation_5v6r0"]
+resource_name = "Start"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/GameStartPanel/VBoxContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.8),
+"transitions": PackedFloat32Array(0.392292, 1, 1.07177),
+"update": 0,
+"values": [Vector2(549, 1411), Vector2(549, 479.829), Vector2(549, 411)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/GameStartPanel/Label:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.566667, 0.8),
+"transitions": PackedFloat32Array(0.25, 1, 1),
+"update": 0,
+"values": [Vector2(687, -200), Vector2(687, 407.25), Vector2(687, 330)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_10c2w"]
+_data = {
+&"RESET": SubResource("Animation_uyinl"),
+&"Start": SubResource("Animation_5v6r0")
+}
+
 [node name="Game" type="Node2D"]
 script = ExtResource("1_0sr1o")
 
@@ -2639,7 +2699,6 @@ theme_override_font_sizes/font_size = 32
 text = "Play again"
 
 [node name="GameStartPanel" type="Panel" parent="CanvasLayer"]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -2773,7 +2832,6 @@ position = Vector2(946, 349)
 current = true
 
 [node name="AudioStreamPlayerReady" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("18_uyinl")
 
 [node name="NewPlayerInputUi" parent="." instance=ExtResource("18_uyinl")]
 anchors_preset = 0
@@ -2792,5 +2850,10 @@ offset_left = 1821.0
 offset_top = 85.0
 offset_right = 1821.0
 offset_bottom = 85.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_10c2w")
+}
 
 [connection signal="pressed" from="CanvasLayer/GameOverPanel/Button" to="." method="_on_button_pressed"]

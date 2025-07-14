@@ -13,6 +13,7 @@ const UnitScene: PackedScene = preload("res://scenes/unit/unit.tscn")
 @onready var label_red_ready: Label = $CanvasLayer/GameStartPanel/VBoxContainer/LabelRed
 @onready var label_blue_ready: Label = $CanvasLayer/GameStartPanel/VBoxContainer/LabelBlue
 @onready var audio_stream_player_ready: AudioStreamPlayer = $AudioStreamPlayerReady
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
 var is_red_ready:= false
@@ -26,6 +27,7 @@ func _ready() -> void:
 	GameManager.OnGameOver.connect(on_game_over)
 	game_over_panel.hide()
 	game_start_panel.show()
+	animation_player.play("Start")
 
 func _process(delta: float) -> void:
 	if is_game_over:
