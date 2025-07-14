@@ -15,17 +15,20 @@ func _process(delta: float) -> void:
 
 func _input(event: InputEvent):
 	#if (event is InputEventJoypadButton or event is InputEventJoypadMotion) and event.device + 1 == _idx:
-	if event.is_action_pressed("Right", true):
-		SpawnRed(UNIT_FIGHTER)
-		return
-	
 	if event.is_action_pressed("Left", true):
 		SpawnRed(UNIT_FIGHTER)
 		return
-
+	
+	if event.is_action_pressed("Right", true):
+		SpawnBlue(UNIT_FIGHTER)
+		return
 
 func SpawnRed(unitInfo: UnitInfo):
-	red_spawn.TrySpawn(unitInfo, UnitScene)
+	var unitCost = 1
+	if GameManager.PlayerRedGold > unitCost and red_spawn.TrySpawn(unitInfo, UnitScene):
+		GameManager.PlayerRedGold -= unitCost
 
 func SpawnBlue(unitInfo: UnitInfo):
-	blue_spawn.TrySpawn(unitInfo, UnitScene)
+	var unitCost = 1
+	if GameManager.PlayerBlueGold > unitCost and blue_spawn.TrySpawn(unitInfo, UnitScene):
+		GameManager.PlayerBlueGold -= unitCost

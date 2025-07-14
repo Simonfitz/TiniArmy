@@ -13,14 +13,16 @@ func _process(delta: float) -> void:
 	$SpawnArea2D/VacantIndicator.visible = is_vacant
 	pass
 
-func TrySpawn(unitInfo: UnitInfo, unitScene: PackedScene):
+func TrySpawn(unitInfo: UnitInfo, unitScene: PackedScene) -> bool:
 	if not is_vacant:
 		print("Something in the way")
-		return
+		return false
 	
 	var unit: Unit = unitScene.instantiate()
 	unit.unit_info = unitInfo
+	unit.set_team(team_name)
 	spawn_point.add_child(unit)
+	return true
 
 func _on_spawn_area_2d_body_entered(body: Node2D) -> void:
 	if body is not Unit:
