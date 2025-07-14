@@ -18,11 +18,11 @@ func _input(event: InputEvent):
 
 	#if (event is InputEventJoypadButton or event is InputEventJoypadMotion) and event.device + 1 == _idx:
 	if (event.is_action_pressed("Up", true) and IsPlayerRed) or (event.is_action_pressed("Up2", true) and not IsPlayerRed):
-		selectedLevel+=1
+		selectedLevel-=1
 		selectedLevel = clamp(selectedLevel,0 ,2)
 		update_gui()
 	if (event.is_action_pressed("Down", true) and IsPlayerRed) or (event.is_action_pressed("Down2", true) and not IsPlayerRed):
-		selectedLevel-=1
+		selectedLevel+=1
 		selectedLevel = clamp(selectedLevel,0 ,2)
 		update_gui()
 
