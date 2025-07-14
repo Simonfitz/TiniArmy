@@ -10,7 +10,7 @@ func _ready() -> void:
 	team_name = "red" if IsRed else "blue"
 
 func _process(delta: float) -> void:
-	$SpawnArea2D/VacantIndicator.visible = is_vacant
+	#$SpawnArea2D/VacantIndicator.visible = is_vacant
 	pass
 
 func TrySpawn(unitInfo: UnitInfo, unitScene: PackedScene) -> bool:

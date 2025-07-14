@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://de0hsbc5ndh3v"]
+[gd_scene load_steps=6 format=3 uid="uid://de0hsbc5ndh3v"]
 
 [ext_resource type="Script" uid="uid://b8oauv2vnlawu" path="res://scenes/castle/castle.gd" id="1_kks2f"]
 [ext_resource type="Texture2D" uid="uid://c72sfcso36b65" path="res://assets/Units/House/Castle_Blue.png" id="2_sjjxt"]
+[ext_resource type="PackedScene" uid="uid://bu3ftjyvcyiyr" path="res://scenes/healthbar/healthbar.tscn" id="3_6letw"]
+[ext_resource type="AudioStream" uid="uid://1tay4cirmx37" path="res://assets/sounds/crash.mp3" id="4_vutgn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kks2f"]
 size = Vector2(290, 196)
@@ -16,3 +18,16 @@ shape = SubResource("RectangleShape2D_kks2f")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_sjjxt")
+
+[node name="Healthbar" parent="." instance=ExtResource("3_6letw")]
+offset_left = -118.0
+offset_top = -106.0
+offset_right = 182.0
+offset_bottom = -82.0
+scale = Vector2(0.783181, 0.691565)
+metadata/_edit_use_anchors_ = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_vutgn")
+volume_db = 8.283
+pitch_scale = 0.33
