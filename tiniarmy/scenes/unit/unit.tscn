@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bf0gdckk8p50d"]
+[gd_scene load_steps=31 format=3 uid="uid://bf0gdckk8p50d"]
 
 [ext_resource type="Script" uid="uid://c8k7crttpq6jk" path="res://scenes/unit/unit.gd" id="1_fmv3f"]
 [ext_resource type="Texture2D" uid="uid://5ne8uvkq1e5" path="res://assets/Units/Blue Units/Warrior/Warrior_Attack1.png" id="2_0wuuu"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://c1p7wied0o3ge" path="res://resources/states/state_fighting.gd" id="4_vgvef"]
 [ext_resource type="Script" uid="uid://cunmh5xsurow8" path="res://resources/states/state_idle.gd" id="5_vgvef"]
 [ext_resource type="PackedScene" uid="uid://bu3ftjyvcyiyr" path="res://scenes/healthbar/healthbar.tscn" id="9_vqlpx"]
+[ext_resource type="AudioStream" uid="uid://c88yp8x2wt03t" path="res://assets/sounds/pop.mp3" id="10_l0n34"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fvc8g"]
 size = Vector2(92, 82)
@@ -210,3 +211,6 @@ offset_top = -68.0
 offset_right = 44.0
 offset_bottom = -48.0
 text = "MOVING"
+
+[node name="AudioStreamPlayer2DSpawn" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_l0n34")

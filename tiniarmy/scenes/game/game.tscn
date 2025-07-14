@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://c1q4ixvw878vj"]
+[gd_scene load_steps=30 format=4 uid="uid://c1q4ixvw878vj"]
 
 [ext_resource type="Script" uid="uid://458ollabhikt" path="res://scenes/game/game.gd" id="1_0sr1o"]
 [ext_resource type="PackedScene" uid="uid://bl33qu6hsy0yo" path="res://scenes/player_input_ui/player_input.tscn" id="1_sul5r"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://dxeuccn22ndci" path="res://assets/Tilemaps/Rocks_04.png" id="9_10c2w"]
 [ext_resource type="Texture2D" uid="uid://ccoxx5g7swqxx" path="res://assets/Tilemaps/cloud_tileset.png" id="10_3xj4h"]
 [ext_resource type="Texture2D" uid="uid://bxrrm37r4ieso" path="res://assets/Tilemaps/Water.png" id="10_pg2xm"]
+[ext_resource type="AudioStream" uid="uid://kgx5n3rmjxjv" path="res://assets/sounds/bg.mp3" id="17_5v6r0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gc57s"]
 texture = ExtResource("5_otnwt")
@@ -2773,5 +2774,9 @@ IsRed = true
 
 [node name="BlueSpawn" parent="SpawnPoints" instance=ExtResource("4_kelw5")]
 position = Vector2(1800, 598)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_5v6r0")
+volume_db = -23.009
 
 [connection signal="pressed" from="CanvasLayer/GameOverPanel/Button" to="." method="_on_button_pressed"]
