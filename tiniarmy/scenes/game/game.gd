@@ -24,6 +24,7 @@ func _ready() -> void:
 	GameManager.OnSpawnUnit.connect(on_unit_spawn)
 	GameManager.OnGameOver.connect(on_game_over)
 	game_over_panel.hide()
+	game_start_panel.show()
 
 func _process(delta: float) -> void:
 	if is_game_over:
