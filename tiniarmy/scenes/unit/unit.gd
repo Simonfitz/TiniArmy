@@ -8,12 +8,14 @@ const LAYERS = {
 
 var direction: int = 1 # positive or negitive to multiply speed by
 var can_attack: bool = false
+var blocked: bool = false
 var enemy_team: String
 @export var team: String
 @export var unit_info: UnitInfo
 @export var unit_state: String = "Moving"
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-@onready var attack_ray_cast_2d: RayCast2D = $AttackRayCast2D
+@onready var enemy_ray_cast_2d: RayCast2D = $EnemyRayCast2D
+@onready var ally_ray_cast_2d: RayCast2D = $AllyRayCast2D
 
 
 # Called when the node enters the scene tree for the first time.
@@ -26,8 +28,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	target_in_range()
-
+	enemy_in_range()
+	ally_in_range()
 
 func die():
 	queue_free()
@@ -47,17 +49,24 @@ func update_values_for_team():
 	update_range()
 	
 func update_range():
-	attack_ray_cast_2d.target_position = attack_ray_cast_2d.target_position * direction
+	enemy_ray_cast_2d.target_position = enemy_ray_cast_2d.target_position * direction
 
-func target_in_range():
-	if attack_ray_cast_2d.is_colliding():
+func enemy_in_range():
+	if enemy_ray_cast_2d.is_colliding():
 		can_attack = true
 	else:
 		can_attack = false
+		
+func ally_in_range():
+	if ally_ray_cast_2d.is_colliding():
+		blocked = true
+	else:
+		blocked = false
 	
 func set_layers():
 	set_collision_layer_value(LAYERS[team], true)
 	
 func set_masks():
 	set_collision_mask_value(LAYERS[team], true)
-	attack_ray_cast_2d.set_collision_mask_value(LAYERS[enemy_team], true)
+	ally_ray_cast_2d.set_collision_mask_value(LAYERS[team], true)
+	enemy_ray_cast_2d.set_collision_mask_value(LAYERS[enemy_team], true)
