@@ -16,7 +16,7 @@ var last_direction := DIRECTIONS.LEFT
 
 
 func enter():
-	animated_sprite_2d.play("fighting")
+	animated_sprite_2d.play("moving")
 
 
 func update(delta):
@@ -25,7 +25,7 @@ func update(delta):
 
 	if walk_timer >= walk_duration:
 		walk_timer = 0.0  # Reset the timer
-		walk_random()
+		walk_right() #TODO move direction based on team
 
 	if state_timer >= MAX_STATE_DURATION:
 		state_timer = 0.0
@@ -33,23 +33,23 @@ func update(delta):
 
 
 func walk_left():
-	animation.flip_h = false
-	animation.play("walk")
-	var new_monster_pos = Vector2(monster.position.x - MOVE_DISTANCE, monster.position.y)
-	if can_move(new_monster_pos):
+	animated_sprite_2d.flip_h = false
+	animated_sprite_2d.play("walk")
+	var new_unit_pos = Vector2(unit.position.x - MOVE_DISTANCE, unit.position.y)
+	if can_move(new_unit_pos):
 		var movement_tween = create_tween()
-		movement_tween.tween_property(monster, "position", new_monster_pos, walk_duration)
+		movement_tween.tween_property(unit, "position", new_unit_pos, walk_duration)
 		last_direction = DIRECTIONS.LEFT
 
 
 func walk_right():
-	animation.flip_h = true
-	animation.play("walk")
-	var new_monster_pos = Vector2(monster.position.x + MOVE_DISTANCE, monster.position.y)
-	if can_move(new_monster_pos):
+	animated_sprite_2d.flip_h = true
+	animated_sprite_2d.play("walk")
+	var new_unit_pos = Vector2(unit.position.x + MOVE_DISTANCE, unit.position.y)
+	if can_move(new_unit_pos):
 		var movement_tween = create_tween()
-		movement_tween.tween_property(monster, "position", new_monster_pos, walk_duration)
+		movement_tween.tween_property(unit, "position", new_unit_pos, walk_duration)
 		last_direction = DIRECTIONS.LEFT
 
-func can_move(new_monster_pos):
+func can_move(new_unit_pos):
 	pass

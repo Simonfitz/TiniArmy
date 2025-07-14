@@ -11,6 +11,8 @@ var last_direction := DIRECTIONS.LEFT
 @onready var unit: RigidBody2D = $"../.."
 @onready var animated_sprite_2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
 
+func enter():
+	animated_sprite_2d.play("fighting")
 
 func update(delta):
 	attack_timer += delta
