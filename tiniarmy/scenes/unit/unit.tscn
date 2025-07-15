@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bf0gdckk8p50d"]
+[gd_scene load_steps=33 format=3 uid="uid://bf0gdckk8p50d"]
 
 [ext_resource type="Script" uid="uid://c8k7crttpq6jk" path="res://scenes/unit/unit.gd" id="1_fmv3f"]
 [ext_resource type="Texture2D" uid="uid://5ne8uvkq1e5" path="res://assets/Units/Blue Units/Warrior/Warrior_Attack1.png" id="2_0wuuu"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dfjgvl6uj83db" path="res://assets/Units/Blue Units/Warrior/Warrior_Run.png" id="3_w7udy"]
 [ext_resource type="Script" uid="uid://c1p7wied0o3ge" path="res://resources/states/state_fighting.gd" id="4_vgvef"]
 [ext_resource type="Script" uid="uid://cunmh5xsurow8" path="res://resources/states/state_idle.gd" id="5_vgvef"]
+[ext_resource type="Script" uid="uid://b8nng3wbphqfx" path="res://resources/states/state_dying.gd" id="9_7jhsn"]
 [ext_resource type="PackedScene" uid="uid://bu3ftjyvcyiyr" path="res://scenes/healthbar/healthbar.tscn" id="9_vqlpx"]
 [ext_resource type="AudioStream" uid="uid://c0egsj46kpkj6" path="res://assets/sounds/spawn0.mp3" id="10_5im7a"]
 [ext_resource type="AudioStream" uid="uid://1tay4cirmx37" path="res://assets/sounds/crash.mp3" id="11_5im7a"]
@@ -196,6 +197,10 @@ metadata/_custom_type_script = "uid://duaiwkoi7fg5x"
 script = ExtResource("5_vgvef")
 metadata/_custom_type_script = "uid://cunmh5xsurow8"
 
+[node name="Dying" type="Node" parent="StateMachine"]
+script = ExtResource("9_7jhsn")
+metadata/_custom_type_script = "uid://b8nng3wbphqfx"
+
 [node name="Healthbar" parent="." instance=ExtResource("9_vqlpx")]
 visible = false
 offset_left = -32.0
@@ -207,7 +212,6 @@ offset_bottom = -38.0
 position = Vector2(2, -11)
 
 [node name="StateLabel" type="Label" parent="."]
-visible = false
 offset_left = -34.0
 offset_top = -68.0
 offset_right = 44.0

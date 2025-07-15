@@ -56,10 +56,10 @@ func on_unit_spawn(team: String, unit_data: UnitInfo):
 
 	if team == "red":
 		if red_spawn.TrySpawn(unit_data, UnitScene):
-			GameManager.PlayerRedGold -= unit_data.cost
+			GameManager.SpendGold(team, unit_data.cost)
 	else:
 		if blue_spawn.TrySpawn(unit_data, UnitScene):
-			GameManager.PlayerBlueGold -= unit_data.cost
+			GameManager.SpendGold(team, unit_data.cost)
 
 func on_game_over(team_died):
 	is_game_over = true

@@ -11,6 +11,9 @@ func enter():
 	pass
 
 
+func update(_delta):
+	pass
+	
 func exit():
 	exited.emit()
 

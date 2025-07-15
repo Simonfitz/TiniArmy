@@ -12,6 +12,7 @@ extends RigidBody2D
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var health: int = 50
+var is_dead = false
 
 func _ready():
 	sprite_2d.texture = sprite_texture
@@ -27,6 +28,7 @@ func take_damage(damage):
 		lose()
 
 func lose():
+	is_dead = true
 	audio_stream_player_2d.play()
 	sprite_2d.texture = destroyed_castle_texture
 	GameManager.BaseDestroyed(team)

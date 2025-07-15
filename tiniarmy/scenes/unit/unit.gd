@@ -25,6 +25,8 @@ var is_dead:= false
 @onready var healthbar: HealthBar = $Healthbar
 @onready var hitmark_container: Node2D = $HitmarkContainer
 @onready var audio_stream_player_2d_spawn_die: AudioStreamPlayer2D = $AudioStreamPlayer2DSpawnDie
+@onready var state_machine: Node = $StateMachine
+
 
 func _ready():
 	current_health = unit_info.health
@@ -50,18 +52,11 @@ func take_damage(damage):
 	hitmarkObj.SetDmg(damage)
 	hitmark_container.add_child(hitmarkObj)
 	if current_health <= 0:
-		is_dead = true
-		healthbar.hide()
 		die()
 
 func die():
-	animated_sprite_2d.hide()
-	audio_stream_player_2d_spawn_die.finished.connect(on_die_sound_finished)
-	audio_stream_player_2d_spawn_die.play()
+	state_machine.set_state("Dying")
 
-func on_die_sound_finished():
-	audio_stream_player_2d_spawn_die.finished.disconnect(on_die_sound_finished)
-	queue_free()
 	
 func set_team(team_name: String):
 	team = team_name
@@ -88,11 +83,11 @@ func update_speed():
 	animated_sprite_2d.speed_scale = unit_info.speed
 
 func enemy_in_range():
-	if enemy_ray_cast_2d.is_colliding():
-		target = enemy_ray_cast_2d.get_collider()
-		if target != null and target.team == enemy_team:
+	var new_target = enemy_ray_cast_2d.get_collider()
+	if new_target and not new_target.is_dead and \
+		not is_dead and new_target != null and new_target.team == enemy_team:
+			target = new_target
 			can_attack = true
-		
 	else:
 		can_attack = false
 		target = null

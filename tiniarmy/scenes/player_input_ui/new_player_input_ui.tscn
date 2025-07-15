@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dhr2fvrjrn1kq"]
+[gd_scene load_steps=7 format=3 uid="uid://dkd88gypqpgnp"]
 
 [ext_resource type="Script" uid="uid://c3qlj3o48a4it" path="res://scenes/player_input_ui/new_player_input_ui.gd" id="1_nwn8g"]
 [ext_resource type="Texture2D" uid="uid://dnpa8v4xix1ty" path="res://assets/UI/Banner_Vertical.png" id="2_h54vr"]
@@ -12,37 +12,99 @@ region = Rect2(32, 32, 128, 128)
 
 [node name="NewPlayerInputUi" type="Panel"]
 self_modulate = Color(1, 1, 1, 0)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -1760.0
-offset_bottom = -880.0
-grow_horizontal = 2
-grow_vertical = 2
 script = ExtResource("1_nwn8g")
 
 [node name="Background" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -24.0
-offset_top = 1.0
-offset_right = 8.0
-offset_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 192.0
 texture = ExtResource("2_h54vr")
+
+[node name="Cost" type="Control" parent="."]
+layout_mode = 2
+anchors_preset = 0
+offset_left = 104.0
+offset_top = 40.0
+offset_right = 137.0
+offset_bottom = 63.0
+
+[node name="CostIcon" type="TextureRect" parent="Cost"]
+layout_mode = 2
+offset_left = 1.0
+offset_top = 4.0
+offset_right = 18.0
+offset_bottom = 21.0
+texture = ExtResource("5_2xwnp")
+expand_mode = 1
+
+[node name="CostLabel" type="Label" parent="Cost"]
+layout_mode = 2
+offset_left = 16.0
+offset_top = 2.0
+offset_right = 45.0
+offset_bottom = 22.0
+text = "12"
+
+[node name="Bank" type="Control" parent="."]
+layout_mode = 2
+anchors_preset = 0
+offset_left = 76.0
+offset_top = 162.0
+offset_right = 147.0
+offset_bottom = 185.0
+
+[node name="CoinIcon" type="TextureRect" parent="Bank"]
+layout_mode = 2
+offset_left = 1.0
+offset_top = 4.0
+offset_right = 18.0
+offset_bottom = 21.0
+texture = ExtResource("5_2xwnp")
+expand_mode = 1
+
+[node name="CoinIcon2" type="TextureRect" parent="Bank"]
+layout_mode = 2
+offset_left = -2.0
+offset_top = 9.0
+offset_right = 15.0
+offset_bottom = 26.0
+texture = ExtResource("5_2xwnp")
+expand_mode = 1
+
+[node name="CoinIcon3" type="TextureRect" parent="Bank"]
+layout_mode = 2
+offset_left = 6.0
+offset_top = 9.0
+offset_right = 23.0
+offset_bottom = 26.0
+texture = ExtResource("5_2xwnp")
+expand_mode = 1
+
+[node name="BankLabel" type="Label" parent="Bank"]
+layout_mode = 2
+offset_left = 23.0
+offset_top = 7.0
+offset_right = 52.0
+offset_bottom = 27.0
+text = "76"
+
+[node name="BankLabel2" type="Label" parent="Bank"]
+layout_mode = 2
+offset_left = -36.0
+offset_top = 6.0
+offset_right = -1.0
+offset_bottom = 26.0
+text = "BANK"
 
 [node name="Information" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -4.0
-offset_top = 11.0
-offset_right = 4.0
-offset_bottom = 19.0
+offset_left = 27.0
+offset_top = 12.0
+offset_right = 176.0
+offset_bottom = 164.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -95,17 +157,3 @@ text = "2"
 [node name="3" type="Button" parent="Information/UnitInfo/HBoxContainer/Levels"]
 layout_mode = 2
 text = "3"
-
-[node name="Cost" type="CenterContainer" parent="Information"]
-layout_mode = 2
-
-[node name="Hbox" type="HBoxContainer" parent="Information/Cost"]
-layout_mode = 2
-
-[node name="CostIcon" type="TextureRect" parent="Information/Cost/Hbox"]
-layout_mode = 2
-texture = ExtResource("5_2xwnp")
-
-[node name="CostLabel" type="Label" parent="Information/Cost/Hbox"]
-layout_mode = 2
-text = "1234"

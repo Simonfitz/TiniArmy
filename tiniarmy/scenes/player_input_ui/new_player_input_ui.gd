@@ -5,12 +5,14 @@ var selectedLevel = 0
 var unit_type_array: Array
 var selected_unit: UnitInfo
 @onready var levels: VBoxContainer = $Information/UnitInfo/HBoxContainer/Levels
-@onready var cost_label: Label = $Information/Cost/Hbox/CostLabel
+@onready var cost_label: Label = $Cost/CostLabel
 @onready var unit_icon: TextureRect = $Information/UnitInfo/HBoxContainer/UnitIcon
 @onready var unit_label: Label = $Information/Selection/HBoxContainer/UnitLabel
+@onready var bank_label: Label = $Bank/BankLabel
 
 func _ready() -> void:
 	update_gui()
+	GameManager.OnGoldUpdated.connect(on_gold_updated)
 
 func _input(event: InputEvent):
 	if not GameManager.IsStarted:
@@ -55,3 +57,5 @@ func update_gui():
 func set_cost():
 	cost_label.text = str(selected_unit.cost)
 	
+func on_gold_updated():
+	bank_label.text = str(GameManager.PlayerRedGold if IsPlayerRed else GameManager.PlayerBlueGold)

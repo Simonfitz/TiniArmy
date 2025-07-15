@@ -15,6 +15,7 @@ func enter():
 	unit.freeze = true
 	
 func exit():
+	is_attacking = false
 	unit.freeze = false
 	exited.emit()
 
@@ -23,7 +24,8 @@ func update(delta):
 		is_attacking = true
 		animated_sprite_2d.play("fighting")
 		await animated_sprite_2d.animation_finished
-		unit.target.take_damage(unit.unit_info.attack)
+		if unit.target != null:
+			unit.target.take_damage(unit.unit_info.attack)
 		is_attacking = false
 	
 	if not unit.can_attack:

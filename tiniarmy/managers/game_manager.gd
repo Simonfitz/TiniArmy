@@ -6,9 +6,10 @@ var gold_timer = 0
 
 signal OnSpawnUnit
 signal OnGameOver
+signal OnGoldUpdated
 
-var PlayerRedGold = 0
-var PlayerBlueGold = 0
+var PlayerRedGold = 10
+var PlayerBlueGold = 10
 var IsStarted = false
 
 var modifiers: Dictionary = {
@@ -41,7 +42,7 @@ var UNITS_RESOURCES = [
 
 func BaseDestroyed(team):
 	OnGameOver.emit(team)
-	GameManager.IsStarted = false
+	IsStarted = false
 	
 func _process(delta: float) -> void:
 	if not IsStarted:
@@ -52,7 +53,15 @@ func _process(delta: float) -> void:
 		PlayerRedGold += BASE_GOLD_VALUE*get_modifier("red")
 		PlayerBlueGold += BASE_GOLD_VALUE*get_modifier("blue")
 		gold_timer = 0
+		OnGoldUpdated.emit()
 	
+func SpendGold(team: String, cost: int):
+	if team == "red": 
+		PlayerRedGold -= cost
+	else:
+		PlayerBlueGold -= cost
+	OnGoldUpdated.emit()
+
 func SpawnUnit(team, unitIdx, unitLevel):
 	var unit_data: UnitInfo = UNITS_RESOURCES[unitIdx][unitLevel]
 
